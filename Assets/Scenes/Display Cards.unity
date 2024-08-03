@@ -3229,6 +3229,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1578844242}
     m_Modifications:
+    - target: {fileID: 1602634956059665603, guid: 964f166623482c24888323027e489eba, type: 3}
+      propertyPath: DevilHand
+      value: 
+      objectReference: {fileID: 1683803328}
+    - target: {fileID: 1602634956059665603, guid: 964f166623482c24888323027e489eba, type: 3}
+      propertyPath: PlayerHand
+      value: 
+      objectReference: {fileID: 1162717814}
     - target: {fileID: 2265707679340686553, guid: 964f166623482c24888323027e489eba, type: 3}
       propertyPath: m_Name
       value: Card Manager

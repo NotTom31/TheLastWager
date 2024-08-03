@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1538737178191741939}
   - component: {fileID: 1349137485178721904}
   - component: {fileID: 5561327962748542428}
-  - component: {fileID: 8735464759640935915}
   m_Layer: 0
   m_Name: Club
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8735464759640935915
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5204129546096338564}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6641322898525405172
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7784324432829028459}
   - component: {fileID: 370808376434595896}
+  - component: {fileID: 8739182836351641125}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -146,11 +133,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayersCard: 0
+  isCardSelected: 0
   currentSuit: 0
   Club: {fileID: 5204129546096338564}
   Diamond: {fileID: 8017427310877557810}
   Heart: {fileID: 7996688856721231100}
   Spade: {fileID: 7805713452812795067}
+--- !u!65 &8739182836351641125
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641322898525405172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7805713452812795067
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +163,6 @@ GameObject:
   - component: {fileID: 1823818446761605740}
   - component: {fileID: 2961967658546275672}
   - component: {fileID: 1079701885386805325}
-  - component: {fileID: 2020388031035689097}
   m_Layer: 0
   m_Name: Spade
   m_TagString: Untagged
@@ -235,19 +235,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2020388031035689097
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7805713452812795067}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7996688856721231100
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +246,6 @@ GameObject:
   - component: {fileID: 2619997488100406917}
   - component: {fileID: 2876204421412059843}
   - component: {fileID: 8357079276078794870}
-  - component: {fileID: 2292049304247920106}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -332,19 +318,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2292049304247920106
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7996688856721231100}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8017427310877557810
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +329,6 @@ GameObject:
   - component: {fileID: 2915062878733123802}
   - component: {fileID: 3106818258853170491}
   - component: {fileID: 7443015337362205984}
-  - component: {fileID: 9190827474937542651}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Untagged
@@ -429,16 +401,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9190827474937542651
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8017427310877557810}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

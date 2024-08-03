@@ -19,41 +19,59 @@ public class Card : MonoBehaviour
     private float slideDistance = 5f;
     private Vector3 cardOriginPosition;
 
-
     private void Start()
     {
         SetSuit(Suit.Heart);
+        cardOriginPosition = transform.position;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (isCardSelected)
         {
-            FlipCard();
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                FlipCard();
+            }
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                SetSuit(Suit.Club);
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                SetSuit(Suit.Diamond);
+            }
+
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                SetSuit(Suit.Heart);
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                SetSuit(Suit.Spade);
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                PlayCard();
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetMouseButtonDown(0))
         {
-            SetSuit(Suit.Club);
-        }
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            SetSuit(Suit.Diamond);
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            SetSuit(Suit.Heart);
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SetSuit(Suit.Spade);
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            PlayCard();
+            if (Physics.Raycast(ray, out hit))
+            {
+                Card card = hit.collider.GetComponent<Card>();
+                if (card != null)
+                {
+                    CardManager.Instance.SelectCard(card);
+                }
+            }
         }
     }
 
@@ -74,37 +92,41 @@ public class Card : MonoBehaviour
         if (!isInPlay)
         {
             isInPlay = true;
-            //CardManager.Instance.PlayCard(currentSuit, isPlayersCard);
             StartCoroutine(PlayCardCoroutine(isInPlay));
         }
         else
         {
             isInPlay = false;
-            //CardManager.Instance.PlayCard(currentSuit, isPlayersCard);
             StartCoroutine(PlayCardCoroutine(isInPlay));
         }
     }
-
-    private void OnMouseDown()
-    {
-        CardManager.Instance.SelectCard(this);
-    }
-
 
     private IEnumerator PlayCardCoroutine(bool isInPlay)
     {
         float elapsedTime = 0f;
         Vector3 startPosition = transform.position;
-        Vector3 endPosition = startPosition + transform.forward * slideDistance;
+        Vector3 endPosition = startPosition + transform.up * slideDistance;
 
-        while (elapsedTime < slideDuration)
+        if (isInPlay)
         {
-            transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / slideDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            while (elapsedTime < slideDuration)
+            {
+                transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / slideDuration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            transform.position = endPosition;
         }
-
-        transform.position = endPosition;
+        else
+        {
+            while (elapsedTime < slideDuration)
+            {
+                transform.position = Vector3.Lerp(startPosition, cardOriginPosition, elapsedTime / slideDuration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            transform.position = startPosition;
+        }
     }
 
     public void FlipCard()

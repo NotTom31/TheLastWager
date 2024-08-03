@@ -13,6 +13,7 @@ public enum Suit
 public class CardManager : MonoBehaviour
 {
     public static CardManager Instance;
+    private Card selectedCard;
 
     private void Awake()
     {
@@ -31,21 +32,19 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject PlayerHand;
     [SerializeField] GameObject DevilHand;
 
-    public void PlayCard(Suit suit, bool isPlayersCard)
-    {
-        
-    }
-
     public void SelectCard(Card card)
     {
- 
-        Card[] allCards = FindObjectsOfType<Card>();
-        foreach (var c in allCards)
+        if (selectedCard != null)
         {
-            c.isCardSelected = false;
+            selectedCard.isCardSelected = false;
         }
 
-        card.isCardSelected = true;
-        Debug.Log("Card selected: " + card.currentSuit);
+        selectedCard = card;
+        selectedCard.isCardSelected = true;
+    }
+
+    public void PlayCard(Suit suit, bool isPlayersCard)
+    {
+        // Implement play card logic if needed
     }
 }
