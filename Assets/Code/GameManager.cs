@@ -7,6 +7,7 @@ public enum GameState
 {
     MAIN_MENU,
     PAUSE,
+    BEGIN,
     DRAW,
     CONTRACT,
     BET,
