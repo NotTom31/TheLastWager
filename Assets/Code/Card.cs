@@ -97,15 +97,17 @@ public class Card : MonoBehaviour
 
     private void PlayCard()
     {
-        if (!isInPlay)
+        switch (isInPlay)
         {
-            isInPlay = true;
-            StartCoroutine(PlayCardCoroutine(isInPlay));
-        }
-        else
-        {
-            isInPlay = false;
-            StartCoroutine(PlayCardCoroutine(isInPlay));
+            case true:
+                isInPlay = false;
+                StartCoroutine(PlayCardCoroutine(isInPlay));
+                break;
+            case false:
+                isInPlay = true;
+                StartCoroutine(PlayCardCoroutine(isInPlay));
+                CardManager.Instance.PlayCard(currentSuit, isPlayersCard);
+                break;
         }
     }
 
@@ -133,7 +135,7 @@ public class Card : MonoBehaviour
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
-            transform.position = startPosition;
+            transform.position = cardOriginPosition;
         }
     }
 

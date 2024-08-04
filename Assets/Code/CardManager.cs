@@ -15,6 +15,10 @@ public class CardManager : MonoBehaviour
     public static CardManager Instance;
     private Card selectedCard;
 
+    public List<Card> playerHandCards = new List<Card>();
+    public List<Card> devilHandCards = new List<Card>();
+
+
     private void Awake()
     {
         // Singleton pattern
@@ -45,7 +49,14 @@ public class CardManager : MonoBehaviour
 
     public void PlayCard(Suit suit, bool isPlayersCard)
     {
-        // Implement play card logic if needed
+        if (isPlayersCard)
+        {
+            playerHandCards.Add(selectedCard);
+        }
+        else
+        {
+            devilHandCards.Add(selectedCard);
+        }
     }
 
     public void RandomizeAllCards()
