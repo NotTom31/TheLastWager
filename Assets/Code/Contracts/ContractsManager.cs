@@ -20,7 +20,7 @@ public class ContractsManager : MonoBehaviour
     public float pointReward; //modified from other scripts through events
     
     public event Action OnNewContract;
-
+    public event Action<bool> OnCheckHistory; //true for "it's the player's turn"
 
     public static ContractsManager Instance;
     private void Awake()
@@ -67,6 +67,7 @@ public class ContractsManager : MonoBehaviour
 
     public void EvaluateCardPlay(Suit s, bool user) //if user is false, the card was played by the devil
     {
+        OnCheckHistory?.Invoke(user);
         pointReward = 0.0f;
 
         //events in this switch statement will modify pointReward from the ContractClause class

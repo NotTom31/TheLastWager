@@ -55,7 +55,12 @@ public class Contract : MonoBehaviour
     {
         blurbs = new string[4];
         for (int i = 0; i < 4; i++)
-            blurbs[i] = clauses[i].blurb;
+        {
+            if (clauses[i] == null)
+                blurbs[i] = "no clause";
+            else
+                blurbs[i] = clauses[i].blurb;
+        }
     }
 
     private void InitGrayedMatrix()
@@ -88,6 +93,10 @@ public class Contract : MonoBehaviour
     public void ActivateClauses()
     {
         foreach (ContractClause cc in clauses)
+        {
+            if (cc == null)
+                continue;
             cc.Activate();
+        }
     }
 }

@@ -101,20 +101,11 @@ public class CardManager : MonoBehaviour
 
         foreach (Card card in allCards)
         {
-            card.canClick = false;
-            card.ResetCard();
-        }
-
-    }
-
-    public void RandomizeAllSuitsPart2() //This is called by the RandomizeAllCards function above (yes I know it's dumb lol)
-    {
-        Card[] allCards = FindObjectsOfType<Card>();
-
-        foreach (Card card in allCards)
-        {
             Suit randomSuit = (Suit)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Suit)).Length);
             card.SetSuit(randomSuit);
+
+            card.canClick = false;
+            card.ResetCard();
 
             if (card.isPlayersCard)
             {
@@ -126,5 +117,27 @@ public class CardManager : MonoBehaviour
                 devilHandCards.Add(card);
             }
         }
+
     }
+
+    //public void RandomizeAllSuitsPart2() //This is called by the RandomizeAllCards function above (yes I know it's dumb lol)
+    //{
+    //    Card[] allCards = FindObjectsOfType<Card>();
+
+    //    foreach (Card card in allCards)
+    //    {
+    //        Suit randomSuit = (Suit)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Suit)).Length);
+    //        card.SetSuit(randomSuit);
+
+    //        if (card.isPlayersCard)
+    //        {
+    //            playerHandCards.Add(card);
+    //            card.canClick = true;
+    //        }
+    //        else
+    //        {
+    //            devilHandCards.Add(card);
+    //        }
+    //    }
+    //}
 }

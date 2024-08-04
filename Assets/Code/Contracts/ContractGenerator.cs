@@ -85,4 +85,20 @@ public class ContractGenerator
         str += "]";
         return str;
     }
+
+    public static List<int[]> PRESET_CLAUSE_CODES = new List<int[]>()
+    {
+        /*
+        cg.NewNodeByIndex(0, 0, 0, 0, 4); //spades are worth +1
+        cg.NewNodeByIndex(0, 0, 1, 0, 7); //diamonds are worth +3
+        cg.NewNodeByIndex(0, 0, 2, 0, 0); //clubs are worth -2
+        cg.NewNodeByIndex(0, 0, 3, 0, 4); //hearts are worth +1 */
+
+        new int[] { 0, 0, 0, 0, 4 }, //spades are worth +1
+        new int[] { 0, 0, 1, 0, 7 }, //diamonds are worth +3
+        new int[] { 0, 0, 2, 0, 0 }, //clubs are worth -2
+        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
+        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
+        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0} //when you play a spade, gain a point for every Heart in your hand.
+    };
 }

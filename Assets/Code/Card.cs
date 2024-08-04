@@ -131,7 +131,7 @@ public class Card : MonoBehaviour
         if (!isFlipped)
             FlipCard();
         yield return new WaitForSeconds(1.5f);
-        CardManager.Instance.RandomizeAllSuitsPart2();
+        //CardManager.Instance.RandomizeAllSuitsPart2();
         if (isPlayersCard)
         {
             FlipCard();

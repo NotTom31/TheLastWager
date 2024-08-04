@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static ContractGrammar;
+using System;
 
 //handles the rule-setting of a specific clause in a contract; NVM MOVE THAT LOGIC INTO A CONTRACT MANAGER?
 public class ContractClause : MonoBehaviour
@@ -15,6 +16,7 @@ public class ContractClause : MonoBehaviour
 
     [SerializeField] int[] indices;
     [SerializeField] Contract myContract;
+    [SerializeField] GameObject clausePrefab;
     
     private void Awake()
     {
@@ -43,6 +45,7 @@ public class ContractClause : MonoBehaviour
             Debug.Log("ERROR: base node not assigned");
             return;
         }
+        Debug.Log(baseNode.NodeAsSentence());
         RigBaseNode(baseNode);
     }
 
@@ -81,17 +84,28 @@ public class ContractClause : MonoBehaviour
 
         ContractsManager.Instance.OnNewContract += AdvanceExpiry;
 
+        List<SymbolNode> children = node.GetChildren();
         switch (node.formulaID)
         {
             case 0: //[PERSISTENT EFFECT]
-                RigPersistentEffectNode(node.GetChildren()[0]);
+                RigPersistentEffectNode(children[0]);
                 break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                //TODO
+            case 1: //Whenever [EVENT], [PERSISTENT EFFECT] for the rest of this hand
+            case 2: //The first time [EVENT] each hand, [PERSISTENT EFFECT] for the rest of that hand
+                //TODO!!!!
+                break;
+            case 3: //Whenever [EVENT], [IMMEDIATE EFFECT]
+                RigEventNode(children[1]);
+                immConsequence = children[3];
+                OnEventNodeActivated += ImmediateConsequence;
+                break;
+            case 4: //The first time [EVENT] each hand, [IMMEDIATE EFFECT]
+                RigEventNode(children[1]);
+                immConsequence = children[3];
+                OnEventNodeActivated += OneTimeImmConsequence;
+                break;
+            case 5: //Until you accept another contract, [PERSISTENT EFFECT]
+                //TODO!!!!
                 break;
         }
     }
@@ -191,6 +205,91 @@ public class ContractClause : MonoBehaviour
         }
     }
 
+    private void RigEventNode(SymbolNode node)
+    {
+        if (!VerifyNonterminal(node, Nonterminal.Event))
+        {
+            Debug.Log("ERROR: Event node expected.");
+            return;
+        }
+
+        eventNode = node;
+        ContractsManager.Instance.OnCheckHistory += CheckEventNodeTrigger;
+    }
+
+    private event Action OnEventNodeActivated;
+    private SymbolNode eventNode;
+    public void CheckEventNodeTrigger(bool userTurn)
+    {
+        List<SymbolNode> children = eventNode.GetChildren();
+        if (EvaluatePlayerNode(children[0]) != userTurn)
+            return;
+
+        Suit current;
+        List<Card> playerCards, opponentCards;
+        if (userTurn)
+        {
+            playerCards = CardManager.Instance.playerTableCards;
+            opponentCards = CardManager.Instance.devilTableCards;
+        }
+        else
+        {
+            opponentCards = CardManager.Instance.playerTableCards;
+            playerCards = CardManager.Instance.devilTableCards;
+        }
+        current = LastSuit(playerCards);
+
+        switch (eventNode.formulaID)
+        {
+            case 0: //[PLAYER] plays a [SUIT]
+                if (current != EvaluateSuitNode(children[2]))
+                    return;
+                break;
+            case 1: //[PLAYER] plays a [SUIT] followed by a [SUIT]
+                if (current != EvaluateSuitNode(children[2]) || playerCards.Count < 2 || SecondToLastSuit(playerCards) != EvaluateSuitNode(children[4]))
+                    return;
+                break;
+            case 2: //[PLAYER1] plays a [SUIT] followed by [PLAYER2] playing a [SUIT]
+                if (current != EvaluateSuitNode(children[2]) || opponentCards.Count < 1 || LastSuit(opponentCards) != EvaluateSuitNode(children[6]))
+                    return;
+                break;
+        }
+        OnEventNodeActivated?.Invoke();
+        Debug.Log("trigger was triggered!");
+    }
+
+    //possible calls from OnEventNodeActivated
+    private SymbolNode immConsequence;
+    private SymbolNode persConsequence;
+    private bool oncePerHandFlag;
+    private List<ContractClause> ghostClauses = new List<ContractClause>();
+    private void ImmediateConsequence()
+    {
+        Debug.Log("immediate consequence called");
+        TriggerImmediateEffect(immConsequence);
+    }
+    private void OneTimeImmConsequence()
+    {
+        if (oncePerHandFlag)
+            return;
+        oncePerHandFlag = true;
+        TriggerImmediateEffect(immConsequence);
+    }
+    private void CreateGhostClause()
+    {
+        //TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
+
+    //must check for size before calling these
+    private Suit LastSuit(List<Card> cards)
+    {
+        return cards[cards.Count - 1].currentSuit;
+    }
+    private Suit SecondToLastSuit(List<Card> cards)
+    {
+        return cards[cards.Count - 1].currentSuit;
+    }
+
     private float mathConstant;
     public void AddConstant()
     {
@@ -259,6 +358,7 @@ public class ContractClause : MonoBehaviour
 
         List<Card> cards = new List<Card>();
         List<SymbolNode> locChildren = loc.GetChildren();
+        Debug.Log("at this time the player has " + CardManager.Instance.playerHandCards.Count + " cards in hand");
         switch (loc.formulaID)
         {
             case 0: //[PLAYER]'s hand
@@ -279,7 +379,9 @@ public class ContractClause : MonoBehaviour
                 break;
         }
         foreach (Card c in cards)
-            suitCounts[c.currentSuit] += 1;
+            suitCounts[c.currentSuit] = suitCounts[c.currentSuit] + 1;
+
+        Debug.Log("Suit counts: spades " + suitCounts[Suit.Spade] + " diamonds " + suitCounts[Suit.Diamond] + " clubs " + suitCounts[Suit.Club] + " hearts " + suitCounts[Suit.Heart]);
 
         int count = 0;
         List<SymbolNode> formChildren = form.GetChildren();
