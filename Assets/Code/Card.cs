@@ -25,6 +25,8 @@ public class Card : MonoBehaviour
         SetSuit(Suit.Heart);
         cardOriginPosition = transform.position;
         cardOriginRotation = transform.rotation;
+        if (!isPlayersCard)
+            FlipCard();
     }
 
     private void Update()
