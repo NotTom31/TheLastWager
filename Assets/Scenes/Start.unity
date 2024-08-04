@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &76672442 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1299193518154369956, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
+  m_PrefabInstance: {fileID: 836359777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &126374282 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7125846380676153212, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
@@ -5116,6 +5127,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 977775236462522323, guid: 352439098724e5a44939d44533b828df, type: 3}
   m_PrefabInstance: {fileID: 423883665}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &403085570 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7582613540224269299, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
+  m_PrefabInstance: {fileID: 836359777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &423883665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10167,6 +10189,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3631593529260322313, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 931161266}
+    - target: {fileID: 3631593529260322313, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseOneContract
+      objectReference: {fileID: 0}
     - target: {fileID: 4080998768415485321, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -11004,6 +11034,17 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1609500275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 962250721531878147, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
+  m_PrefabInstance: {fileID: 836359777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1611527059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 825022730058256723, guid: b8a1da817a5bb844789aaa8eb4418267, type: 3}
@@ -11025,6 +11066,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2010988712981015303, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
   m_PrefabInstance: {fileID: 836359777}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1839717995 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8862412541849439244, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
+  m_PrefabInstance: {fileID: 836359777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2734664974588939688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11128,6 +11180,22 @@ PrefabInstance:
       propertyPath: MultiContract
       value: 
       objectReference: {fileID: 251797130}
+    - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: contractClause1
+      value: 
+      objectReference: {fileID: 403085570}
+    - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: contractClause2
+      value: 
+      objectReference: {fileID: 1839717995}
+    - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: contractClause3
+      value: 
+      objectReference: {fileID: 76672442}
+    - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: contractClause4
+      value: 
+      objectReference: {fileID: 1609500275}
     - target: {fileID: 5943143393979988152, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
       propertyPath: tracker
       value: 

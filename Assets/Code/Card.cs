@@ -95,21 +95,24 @@ public class Card : MonoBehaviour
                 }
             }*/
         }
-
-        if (Input.GetMouseButtonDown(0))
+        if (GameManager.Instance.gameState == GameState.PLAY)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                Card card = hit.collider.GetComponent<Card>();
-                if (card != null)
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
                 {
-                    CardManager.Instance.SelectCard(card);
+                    Card card = hit.collider.GetComponent<Card>();
+                    if (card != null)
+                    {
+                        CardManager.Instance.SelectCard(card);
+                    }
                 }
             }
         }
+
     }
 
     public void ResetCard()

@@ -15,6 +15,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject Bet;
     [SerializeField] TimeTracking Timer;
     [SerializeField] SoulTracking SoulCount;
+    [SerializeField] public TextMeshProUGUI contractClause1;
+    [SerializeField] public TextMeshProUGUI contractClause2;
+    [SerializeField] public TextMeshProUGUI contractClause3;
+    [SerializeField] public TextMeshProUGUI contractClause4;
 
     public static MenuManager Instance;
 
@@ -70,6 +74,12 @@ public class MenuManager : MonoBehaviour
         SwitchUI("OneContract");
     }
 
+
+    public void CloseOneContract()
+    {
+        SwitchUI("GameUI");
+    }
+
     public void OpenMultiContract()
     {
         SwitchUI("MultiContract");
@@ -94,6 +104,7 @@ public class MenuManager : MonoBehaviour
         SwitchUI("GameUI");
         Debug.Log("start timer");
         StartTimer();
+        GameManager.Instance.SetState(GameState.PLAY);
         //GameManager.Instance.turn = Turn.PLAYER;
     }
 
@@ -158,5 +169,31 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("Quit Game");
         Application.Quit();
+    }
+
+    public void UpdateContractText(int i, string s)
+    {
+        switch (i)
+        {
+            case 0:
+                Debug.Log("o");
+                contractClause1.text = s;
+                break;
+            case 1:
+                Debug.Log("1");
+                contractClause2.text = s;
+                break;
+            case 2:
+                Debug.Log("2");
+                contractClause3.text = s;
+                break;
+            case 3:
+                Debug.Log("3");
+                contractClause4.text = s;
+                break;
+            default:
+                Debug.Log("catch");
+                break;
+        }
     }
 }

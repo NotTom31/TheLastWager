@@ -35,6 +35,7 @@ public class ContractClause : MonoBehaviour
         indices = indx;
         ContractGenerator cg = new ContractGenerator();
         baseNode = cg.NewNodeByIndex(indx);
+        blurb = baseNode.NodeAsSentence();
         myContract = cont;
     }
 
