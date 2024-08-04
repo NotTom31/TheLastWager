@@ -10,7 +10,7 @@ public class ContractGenerator
     {
         SymbolNode n = new SymbolNode(new Symbol(Nonterminal.Base));
         n.SetChildren(MakeChildrenByIndex(n, indices).Item1);
-        Debug.Log(n.NodeAsSentence());
+        //Debug.Log(n.NodeAsSentence());
         return n;
     }
 

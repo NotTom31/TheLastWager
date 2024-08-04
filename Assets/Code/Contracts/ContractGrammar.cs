@@ -29,7 +29,25 @@ public static class ContractGrammar
                 new Symbol("Whenever"),
                 new Symbol(Nonterminal.Event),
                 new Symbol(", "),
+                new Symbol(Nonterminal.PersistentEffect),
+                new Symbol(" for the rest of this hand") },
+            new List<Symbol>() {
+                new Symbol("The first time "),
+                new Symbol(Nonterminal.Event),
+                new Symbol(" each hand, "),
+                new Symbol(Nonterminal.PersistentEffect),
+                new Symbol(" for the rest of that hand") },
+            new List<Symbol>() {
+                new Symbol("Whenever"),
+                new Symbol(Nonterminal.Event),
+                new Symbol(", "),
                 new Symbol(Nonterminal.ImmediateEffect) },
+            new List<Symbol>() {
+                new Symbol("The first time "),
+                new Symbol(Nonterminal.Event),
+                new Symbol(" each hand, "),
+                new Symbol(Nonterminal.PersistentEffect),
+                new Symbol(" for the rest of this hand") },
             new List<Symbol>() {
                 new Symbol("Until you accept another contract, "),
                 new Symbol(Nonterminal.PersistentEffect) }
@@ -133,7 +151,11 @@ public static class ContractGrammar
             new List<Symbol>() { new Symbol("1.5")},
             new List<Symbol>() { new Symbol("2") },
             new List<Symbol>() { new Symbol("3") },
-            new List<Symbol>() { new Symbol("4") }
+            new List<Symbol>() { new Symbol("4") },
+            new List<Symbol>() { new Symbol("5") }
         }},
     };
+
+    //should match the numbers above this
+    public static readonly float[] NUMBER_LOOKUP = new float[] { -2f, -1f, 0.5f, 0f, 1f, 1.5f, 2f, 3f, 4f, 5f};
 }
