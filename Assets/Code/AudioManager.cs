@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
 
     float prev_progress = 0.0f;
     float timer = 0.0f;
+    float timer_multiplier = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +26,12 @@ public class AudioManager : MonoBehaviour
         {
             music.Add(child.GetComponent<AudioSource>());
         }
-        StartCoroutine(mus());
+        SetPitch(0.5f);
+        Fade("IntroBase", true);
+        //StartCoroutine(mus());
     }
 
-    IEnumerator mus()
+    /*IEnumerator mus()
     {
         Fade("MainBase", true);
         Fade("MainMelody", true);
@@ -36,12 +39,12 @@ public class AudioManager : MonoBehaviour
         Queue("MainGroove", true);
         yield return new WaitForSeconds(11);
         Fade("MainSynth", true);
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.deltaTime * timer_multiplier;
         if ((int)timer % 16 == 0 && (queue_add.Count != 0 || queue_remove.Count != 0))
         {
             foreach(AudioSource q in queue_add)
@@ -149,5 +152,14 @@ public class AudioManager : MonoBehaviour
         queue_add = new List<AudioSource>();
         queue_remove = new List<AudioSource>();
 
+    }
+
+    void SetPitch(float pitch)
+    {
+        foreach (AudioSource song in music)
+        {
+            song.pitch = pitch;
+        }
+        timer_multiplier = pitch;
     }
 }
