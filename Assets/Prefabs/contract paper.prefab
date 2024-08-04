@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6918979736053999118}
   - component: {fileID: 6317139587031427499}
   - component: {fileID: 8092418456533605729}
+  - component: {fileID: 6889572518745744761}
   m_Layer: 0
   m_Name: contract paper
   m_TagString: Untagged
@@ -168,3 +169,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6889572518745744761
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732390039030578356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010000003, y: 0.0011524037, z: 0.010000003}
+  m_Center: {x: 0, y: 0.00007620209, z: 0}

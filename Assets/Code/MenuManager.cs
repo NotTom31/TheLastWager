@@ -9,6 +9,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject MainMenu;
     [SerializeField] GameObject CreditsMenu;
     [SerializeField] GameObject GameUI;
+    [SerializeField] GameObject Contract;
+    [SerializeField] GameObject MultiContract;
+    [SerializeField] GameObject Instructions;
 
     public static MenuManager Instance;
 
@@ -47,24 +50,49 @@ public class MenuManager : MonoBehaviour
         SwitchUI("MainMenu");
     }
 
+    public void OpenOneContract()
+    {
+        SwitchUI("OneContract");
+    }
+
+    public void OpenMultiContract()
+    {
+        SwitchUI("MultiContract");
+    }
+
+    public void OpenTutorial()
+    {
+        SwitchUI("Tutorial");
+    }
+
     private void SwitchUI(string name)
     {
+        MainMenu.SetActive(false);
+        CreditsMenu.SetActive(false);
+        GameUI.SetActive(false);
+        Contract.SetActive(false);
+        MultiContract.SetActive(false);
+        Instructions.SetActive(false);
+
         switch (name)
         {
             case "GameUI":
-                MainMenu.SetActive(false);
-                CreditsMenu.SetActive(false);
                 GameUI.SetActive(true);
                 break;
             case "Credits":
-                MainMenu.SetActive(false);
                 CreditsMenu.SetActive(true);
-                GameUI.SetActive(false);
                 break;
             case "MainMenu":
                 MainMenu.SetActive(true);
-                CreditsMenu.SetActive(false);
-                GameUI.SetActive(false);
+                break;
+            case "OneContract":
+                Contract.SetActive(true);
+                break;
+            case "MultiContract":
+                MultiContract.SetActive(true);
+                break;
+            case "Tutorial":
+                Instructions.SetActive(true);
                 break;
         }
     }
