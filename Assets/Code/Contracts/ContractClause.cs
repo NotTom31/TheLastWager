@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//handles the rule-setting of a specific clause in a contract
+//handles the rule-setting of a specific clause in a contract; NVM MOVE THAT LOGIC INTO A CONTRACT MANAGER?
 public class ContractClause : MonoBehaviour
 {
     SymbolNode baseNode;
 
+    //TO REMOVE, this is just for generating logic
     private void Awake()
     {
         ContractGenerator cg = new ContractGenerator();
