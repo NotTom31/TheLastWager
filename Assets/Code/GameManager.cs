@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-        public void SetState(GameState state)
+    public void SetState(GameState state)
     {
         gameState = state;
         OnStateChange?.Invoke(state); //prob a better way to do this
