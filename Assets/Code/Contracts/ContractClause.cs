@@ -9,6 +9,11 @@ public class ContractClause : MonoBehaviour
     SymbolNode baseNode;
     public string blurb { get; private set; }
 
+    //README HERE'S WHAT TO DO... WE NEED TO MAKE AN EXPIRY TRACKER THAT TICKS DOWN EACH TIME YOU TAKE A NEW CONTRACT. EXPIRY SHOULD BE 5 BY DEFAULT, 100 FOR FIRST CONTRACTS, 1 FOR
+    //STUFF THAT SAYS "UNTIL YOU TAKE YOUR NEXT CONTRACT." IF ONE BUT NOT ALL CLAUSES ON A CONTRACT HAVE EXPIRED, IT WILL NEED TO SHOW GRAYED OUT. IF ALL CLAUSES ON A CONTRACT ARE GRAYED,
+    //DESTROY THE CONTRACT OBJECT AND ALL SCRIPTS ATTACHED TO IT INCLUDING THIS ONE. TO IMPLEMENT PERSISTENT EFFECTS THAT
+    //ONLY LAST FOR THE ROUND, INSTANTIATE AN INVISIBLE CONTRACT CLAUSE OF MODEL base -> persistent effect WITH AN EXPIRY OF 1 ROUND.
+
     [SerializeField] int[] indices;
     
     private void Awake()
@@ -54,6 +59,13 @@ public class ContractClause : MonoBehaviour
         {
             case 0: //[PERSISTENT EFFECT]
                 RigPersistentEffectNode(node.GetChildren()[0]);
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                //TODO
                 break;
         }
     }
@@ -109,6 +121,47 @@ public class ContractClause : MonoBehaviour
                     }
                 }
                 break;
+            case 1: //[SUIT] is worth [OPERATOR][X] points for each [FORMATION] in [LOCATION]
+                mathConstant = EvaluateNumberNode(children[3]);
+                formationNode = children[5];
+                locationNode = children[7];
+                if (children[2].formulaID == 0) //addition
+                {
+                    switch (EvaluateSuitNode(children[0]))
+                    {
+                        case Suit.Spade:
+                            ContractsManager.Instance.OnSpadesAddition += AddVariableFormLoc;
+                            break;
+                        case Suit.Diamond:
+                            ContractsManager.Instance.OnDiamondsAddition += AddVariableFormLoc;
+                            break;
+                        case Suit.Club:
+                            ContractsManager.Instance.OnClubsAddition += AddVariableFormLoc;
+                            break;
+                        case Suit.Heart:
+                            ContractsManager.Instance.OnHeartsAddition += AddVariableFormLoc;
+                            break;
+                    }
+                }
+                else //multiplication
+                {
+                    switch (EvaluateSuitNode(children[0]))
+                    {
+                        case Suit.Spade:
+                            ContractsManager.Instance.OnSpadesMultiplication += MultiplyVariableFormLoc;
+                            break;
+                        case Suit.Diamond:
+                            ContractsManager.Instance.OnDiamondsMultiplication += MultiplyVariableFormLoc;
+                            break;
+                        case Suit.Club:
+                            ContractsManager.Instance.OnClubsMultiplication += MultiplyVariableFormLoc;
+                            break;
+                        case Suit.Heart:
+                            ContractsManager.Instance.OnHeartsMultiplication += MultiplyVariableFormLoc;
+                            break;
+                    }
+                }
+                break;
         }
     }
 
@@ -121,7 +174,15 @@ public class ContractClause : MonoBehaviour
     {
         ContractsManager.Instance.pointReward *= mathConstant;
     }
-    
+    SymbolNode formationNode, locationNode;
+    public void AddVariableFormLoc()
+    {
+        ContractsManager.Instance.pointReward += mathConstant * EvaluateFormationsInLocation(formationNode, locationNode);
+    }
+    public void MultiplyVariableFormLoc()
+    {
+        ContractsManager.Instance.pointReward *= mathConstant * EvaluateFormationsInLocation(formationNode, locationNode);
+    }
 
     private float EvaluateNumberNode(SymbolNode node)
     {
@@ -144,6 +205,16 @@ public class ContractClause : MonoBehaviour
         return matrix[node.formulaID];
     }
 
+    private bool EvaluatePlayerNode(SymbolNode node)
+    {
+        if (!VerifyNonterminal(node, Nonterminal.Player))
+        {
+            Debug.Log("ERROR: Player node expected.");
+            return false;
+        }
+        return node.formulaID == 0; //returns true if referring to user, false if devil
+    }
+
     private int EvaluateFormationsInLocation(SymbolNode form, SymbolNode loc)
     {
         if (!VerifyNonterminal(form, Nonterminal.Formation) || !VerifyNonterminal(loc, Nonterminal.Location))
@@ -160,6 +231,64 @@ public class ContractClause : MonoBehaviour
             { Suit.Heart, 0 }
         };
 
-        return 0;
+        List<Card> cards = new List<Card>();
+        List<SymbolNode> locChildren = loc.GetChildren();
+        switch (loc.formulaID)
+        {
+            case 0: //[PLAYER]'s hand
+                if (EvaluatePlayerNode(locChildren[0])) //user
+                    cards = new List<Card>(CardManager.Instance.playerHandCards);
+                else //devil
+                    cards = new List<Card>(CardManager.Instance.devilHandCards);
+                break;
+            case 1: //[PLAYER]'s side of the table
+                if (EvaluatePlayerNode(locChildren[0])) //user
+                    cards = new List<Card>(CardManager.Instance.playerTableCards);
+                else //devil
+                    cards = new List<Card>(CardManager.Instance.devilTableCards);
+                break;
+            case 2: //the table
+                cards = new List<Card>(CardManager.Instance.playerTableCards);
+                cards.AddRange(CardManager.Instance.devilTableCards);
+                break;
+        }
+        foreach (Card c in cards)
+            suitCounts[c.currentSuit] += 1;
+
+        int count = 0;
+        List<SymbolNode> formChildren = form.GetChildren();
+        switch (form.formulaID)
+        {
+            case 0: //[SUIT]
+                count = suitCounts[EvaluateSuitNode(formChildren[0])];
+                break;
+            case 1: //Collection of [X] [SUIT]s
+                count = suitCounts[EvaluateSuitNode(formChildren[2])] / (int)EvaluateNumberNode(formChildren[1]);
+                break;
+            case 2: //Pairing of [SUIT] and [SUIT]
+                count = Mathf.Min(suitCounts[EvaluateSuitNode(formChildren[1])], suitCounts[EvaluateSuitNode(formChildren[3])]);
+                break;
+        }
+        return count;
+    }
+
+    private void TriggerImmediateEffect(SymbolNode node)
+    {
+        if (!VerifyNonterminal(node, Nonterminal.ImmediateEffect))
+        {
+            Debug.Log("ERROR: ImmediateEffect node expected.");
+            return;
+        }
+
+        List<SymbolNode> children = node.GetChildren();
+        switch (node.formulaID)
+        {
+            case 0: //[PLAYER] gains [X] points
+                ContractsManager.Instance.AddPoints((int)EvaluateNumberNode(children[2]), EvaluatePlayerNode(children[0]));
+                break;
+            case 1: //[PLAYER] gains [X] points for each [FORMATION] in [LOCATION]
+                ContractsManager.Instance.AddPoints((int)EvaluateNumberNode(children[2]) * EvaluateFormationsInLocation(children[4], children[6]), EvaluatePlayerNode(children[0]));
+                break;
+        }
     }
 }

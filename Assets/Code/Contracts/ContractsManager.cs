@@ -90,4 +90,9 @@ public class ContractsManager : MonoBehaviour
         int finalCount = (int)Mathf.Round(pointReward);
         points.AddPoints(finalCount, user);
     }
+
+    public void AddPoints(int amt, bool toPlayer)
+    {
+        points.AddPoints(amt, toPlayer);
+    }
 }
