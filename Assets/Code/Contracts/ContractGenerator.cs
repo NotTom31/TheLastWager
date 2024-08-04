@@ -94,11 +94,30 @@ public class ContractGenerator
         cg.NewNodeByIndex(0, 0, 2, 0, 0); //clubs are worth -2
         cg.NewNodeByIndex(0, 0, 3, 0, 4); //hearts are worth +1 */
 
+        //set 1
         new int[] { 0, 0, 0, 0, 4 }, //spades are worth +1
         new int[] { 0, 0, 1, 0, 7 }, //diamonds are worth +3
         new int[] { 0, 0, 2, 0, 0 }, //clubs are worth -2
         new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
+
+        new int[] { 0, 0, 0, 0, 0 }, //spades are worth -2
+        new int[] { 0, 0, 1, 0, 6 }, //diamonds are worth +2
+        new int[] { 0, 0, 2, 0, 4 }, //clubs are worth +1
+        new int[] { 0, 0, 3, 0, 7 }, //hearts are worth +3
+
+        new int[] { 0, 0, 0, 0, 6 }, //spades are worth +2
+        new int[] { 0, 0, 1, 0, 4 }, //diamonds are worth +1
+        new int[] { 0, 0, 2, 0, 7 }, //clubs are worth +3
+        new int[] { 0, 0, 3, 0, 1 }, //hearts are worth -1
+
+
+        //set 2
         new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0} //when you play a spade, gain a point for every Heart in your hand.
+        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0}, 
+        //when you play a spade, gain a point for every Heart in your hand.
+        new int[] { 3, 0, 0, 0, 0, 1, 6 }
+        //when you play a spade, opponent gains 2 points
+
+        
     };
 }

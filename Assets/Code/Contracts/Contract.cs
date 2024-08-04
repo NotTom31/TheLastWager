@@ -35,6 +35,25 @@ public class Contract : MonoBehaviour
         }
     }
 
+    public void SetCode(int index, int[] code)
+    {
+        switch (index)
+        {
+            case 0:
+                clause0Code = code;
+                break;
+            case 1:
+                clause1Code = code;
+                break;
+            case 2:
+                clause2Code = code;
+                break;
+            case 3:
+                clause3Code = code;
+                break;
+        }
+    }
+
     public void InitializeClauses()
     {
         clauses = new ContractClause[4];
@@ -77,7 +96,9 @@ public class Contract : MonoBehaviour
         clauses[idx] = null;
 
         if (AllGrayed())
-            Debug.Log("NOW WE NEED TO DESTROY A CONTRACT");
+        {
+            ContractsManager.Instance.NotifyContractExpiry(this);
+        }
     }
 
     private bool AllGrayed()

@@ -22,6 +22,10 @@ public class ContractsManager : MonoBehaviour
     public event Action OnNewContract;
     public event Action<bool> OnCheckHistory; //true for "it's the player's turn"
 
+    List<Contract> activeContracts = new List<Contract>();
+    List<Contract> prospectiveContracts = new List<Contract>();
+    [SerializeField] GameObject contractPrefab;
+
     public static ContractsManager Instance;
     private void Awake()
     {
@@ -37,6 +41,22 @@ public class ContractsManager : MonoBehaviour
         }
 
         StartCoroutine(Testing());
+    }
+
+    int scriptedClauseCount = 0;
+    public void GenerateProspectiveContracts(int numClauses)
+    {
+        prospectiveContracts.Clear();
+        for (int i = 0; i < 3; i++)
+        {
+            prospectiveContracts.Add(Instantiate(contractPrefab).GetComponent<Contract>());
+            for (int j = 0; j < numClauses; j++)
+            {
+                prospectiveContracts[i].SetCode(j, ContractGenerator.PRESET_CLAUSE_CODES[scriptedClauseCount]);
+                scriptedClauseCount++;
+            }
+        }
+        //UPDATE UI TO HAVE PLAYER CHOOSE ONE
     }
 
     //TO DELETE
@@ -58,11 +78,18 @@ public class ContractsManager : MonoBehaviour
         yield return null;
     }
 
-    public void StartContract()
+    public void ActivateContract(Contract c)
     {
-        //TODO: pass reference to contract and invoke its clauses
+        prospectiveContracts.Clear();
+        activeContracts.Add(c);
 
         OnNewContract?.Invoke();
+    }
+
+    public void NotifyContractExpiry(Contract caller)
+    {
+        activeContracts.Remove(caller);
+        //TODO: if there's stuff that happens when you remove a contract, DO THAT HERE eg destroy object etc
     }
 
     public void EvaluateCardPlay(Suit s, bool user) //if user is false, the card was played by the devil
