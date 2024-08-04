@@ -8,13 +8,13 @@ public class ContractClause : MonoBehaviour
 {
     SymbolNode baseNode;
     public string blurb { get; private set; }
+    private int expiry; //goes down by 1 with each new contract. When it reaches 0, this is deactivated
 
-    //README HERE'S WHAT TO DO... WE NEED TO MAKE AN EXPIRY TRACKER THAT TICKS DOWN EACH TIME YOU TAKE A NEW CONTRACT. EXPIRY SHOULD BE 5 BY DEFAULT, 100 FOR FIRST CONTRACTS, 1 FOR
-    //STUFF THAT SAYS "UNTIL YOU TAKE YOUR NEXT CONTRACT." IF ONE BUT NOT ALL CLAUSES ON A CONTRACT HAVE EXPIRED, IT WILL NEED TO SHOW GRAYED OUT. IF ALL CLAUSES ON A CONTRACT ARE GRAYED,
-    //DESTROY THE CONTRACT OBJECT AND ALL SCRIPTS ATTACHED TO IT INCLUDING THIS ONE. TO IMPLEMENT PERSISTENT EFFECTS THAT
+    //TO IMPLEMENT PERSISTENT EFFECTS THAT
     //ONLY LAST FOR THE ROUND, INSTANTIATE AN INVISIBLE CONTRACT CLAUSE OF MODEL base -> persistent effect WITH AN EXPIRY OF 1 ROUND.
 
     [SerializeField] int[] indices;
+    [SerializeField] Contract myContract;
     
     private void Awake()
     {
@@ -22,22 +22,44 @@ public class ContractClause : MonoBehaviour
         {
             ContractGenerator cg = new ContractGenerator();
             baseNode = cg.NewNodeByIndex(indices);
+            blurb = baseNode.NodeAsSentence();
         }
     }
 
-    private void Start()
+    //needs to be called before "SetRulesActive" to be effective.
+    public void Init(int expry, int[] indx, Contract cont)
     {
-        if (baseNode != null)
+        expiry = expry;
+        indices = indx;
+        myContract = cont;
+    }
+
+    public void Activate()
+    {
+        if (baseNode == null)
         {
-            RigBaseNode(baseNode);
-            blurb = baseNode.NodeAsSentence();
-            Debug.Log(blurb);
+            Debug.Log("ERROR: base node not assigned");
+            return;
         }
+        RigBaseNode(baseNode);
     }
 
     public void SetBaseNode(SymbolNode sn)
     {
         baseNode = sn;
+        blurb = baseNode.NodeAsSentence();
+    }
+
+    public void AdvanceExpiry()
+    {
+        expiry -= 1;
+
+        if (expiry <= 0)
+        {
+            if (myContract != null)
+                myContract.NotifyExpiry(this);
+            Destroy(this.gameObject);
+        }
     }
 
     //returns true if this node does have this symbol
@@ -54,6 +76,8 @@ public class ContractClause : MonoBehaviour
             Debug.Log("ERROR: Base node expected.");
             return;
         }
+
+        ContractsManager.Instance.OnNewContract += AdvanceExpiry;
 
         switch (node.formulaID)
         {
