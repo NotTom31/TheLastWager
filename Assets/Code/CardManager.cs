@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum Suit
 {
@@ -20,6 +21,7 @@ public class CardManager : MonoBehaviour
     public List<Card> devilTableCards = new List<Card>();
     public List<Card> devilHandCards = new List<Card>();
 
+    public event Action<Card, bool> OnCardPlayed;
 
     private void Awake()
     {
@@ -33,6 +35,11 @@ public class CardManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(Instance);
         }
+    }
+
+    private void Start()
+    {
+        RandomizeAllSuitsAnimated();
     }
 
     [SerializeField] GameObject PlayerHand;
@@ -61,6 +68,8 @@ public class CardManager : MonoBehaviour
             devilTableCards.Add(selectedCard);
             devilHandCards.Remove(selectedCard);
         }
+
+        OnCardPlayed?.Invoke(selectedCard, isPlayersCard);
     }
 
     public void UnPlayCard(Suit suit, bool isPlayersCard)
@@ -102,7 +111,7 @@ public class CardManager : MonoBehaviour
 
         foreach (Card card in allCards)
         {
-            Suit randomSuit = (Suit)Random.Range(0, System.Enum.GetValues(typeof(Suit)).Length);
+            Suit randomSuit = (Suit)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Suit)).Length);
             card.SetSuit(randomSuit);
 
             if (card.isPlayersCard)

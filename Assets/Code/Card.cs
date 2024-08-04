@@ -29,7 +29,7 @@ public class Card : MonoBehaviour
         if (!isPlayersCard)
         {
             FlipCardInstant();
-            //canClick = false;
+            canClick = false;
         }
     }
 
