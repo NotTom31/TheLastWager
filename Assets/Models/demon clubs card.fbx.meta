@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: clubs
     second: {fileID: 2100000, guid: 1330389e5ae8d2d46850601ff48ad57a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 5b52ec7b580fd8b408093075b26f2ea2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
