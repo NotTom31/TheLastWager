@@ -41,6 +41,8 @@ public class Contract : MonoBehaviour
         List<int[]> lookup = new List<int[]>() { clause0Code, clause1Code, clause2Code, clause3Code };
         for (int i = 0; i < 4; i++)
         {
+            if (lookup[i].Length == 0)
+                continue;
             ContractClause clause = GameObject.Instantiate(clausePrefab, transform).GetComponent<ContractClause>();
             clause.Init(startingExpiry, lookup[i], this);
             clauses[i] = clause;
