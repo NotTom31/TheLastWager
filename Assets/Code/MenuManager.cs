@@ -12,6 +12,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject Contract;
     [SerializeField] GameObject MultiContract;
     [SerializeField] GameObject Instructions;
+    [SerializeField] GameObject Bet;
+    [SerializeField] TimeTracking Timer;
+    [SerializeField] SoulTracking SoulCount;
 
     public static MenuManager Instance;
 
@@ -40,6 +43,13 @@ public class MenuManager : MonoBehaviour
         GameManager.Instance.SetState(GameState.BEGIN);
     }
 
+    public void StartNewGame()
+    {
+        Debug.Log("here");
+        GameManager.Instance.StartGame();
+        OpenMultiContract();
+    }
+
     public void OpenCredits()
     {
         SwitchUI("Credits");
@@ -50,6 +60,11 @@ public class MenuManager : MonoBehaviour
         SwitchUI("MainMenu");
     }
 
+    public void OpenBet()
+    {
+        SwitchUI("BetUI");
+    }
+
     public void OpenOneContract()
     {
         SwitchUI("OneContract");
@@ -58,6 +73,28 @@ public class MenuManager : MonoBehaviour
     public void OpenMultiContract()
     {
         SwitchUI("MultiContract");
+        GameManager.Instance.SetState(GameState.CONTRACT);
+    }
+
+    public void SelectContract()
+    {
+        SwitchUI("GameUI");
+        GameManager.Instance.SetState(GameState.BET);
+        OpenBet();
+    }
+
+    public void SubmitBet()
+    {
+        
+        BeginPlay();
+    }
+
+    public void BeginPlay()
+    {
+        SwitchUI("GameUI");
+        Debug.Log("start timer");
+        StartTimer();
+        //GameManager.Instance.turn = Turn.PLAYER;
     }
 
     public void OpenTutorial()
@@ -73,6 +110,7 @@ public class MenuManager : MonoBehaviour
         Contract.SetActive(false);
         MultiContract.SetActive(false);
         Instructions.SetActive(false);
+        Bet.SetActive(false);
 
         switch (name)
         {
@@ -94,7 +132,26 @@ public class MenuManager : MonoBehaviour
             case "Tutorial":
                 Instructions.SetActive(true);
                 break;
+            case "BetUI":
+                Bet.SetActive(true);
+                break;
         }
+    }
+
+    public void UpdateTimer(float t)
+    {
+        Timer.SetTimerLength(t);
+    }
+
+    public void StartTimer()
+    {
+        UpdateTimer(60);//temp
+        Timer.StartTimer();
+    }
+
+    public void UpdateSoulCount(float c)
+    {
+        SoulCount.SetSoulCount(c);
     }
 
     public void ClickQuit()
