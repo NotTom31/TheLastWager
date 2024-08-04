@@ -21,25 +21,22 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("a");
         foreach (Transform child in transform)
         {
             music.Add(child.GetComponent<AudioSource>());
         }
-        StartCoroutine(mus());
+        //StartCoroutine(mus());
     }
 
-    IEnumerator mus()
+    /*IEnumerator mus()
     {
-        Debug.Log("b");
         Fade("MainBase", true);
         Fade("MainMelody", true);
         yield return new WaitForSeconds(5);
-        Debug.Log("c");
         Queue("MainGroove", true);
         yield return new WaitForSeconds(11);
         Fade("MainSynth", true);
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -62,17 +59,14 @@ public class AudioManager : MonoBehaviour
 
     if (fade_in.Count > 0)
         {
-            Debug.Log("e");
             foreach (AudioSource fade in fade_in.ToArray())
             {
                 if (fade.volume < 1.0f)
                 {
                     fade.volume += Time.deltaTime * FADE_SPEED;
-                    Debug.Log("f");
                 } 
                 else
                 {
-                    Debug.Log("g");
                     fade.volume = 1.0f;
                     fade_in.Remove(fade);
                 }
@@ -118,7 +112,6 @@ public class AudioManager : MonoBehaviour
 
     void Fade(string id, bool on){
         AudioSource source = Find(id);
-        Debug.Log("d");
         if (on)
         {
             fade_in.Add(source);
