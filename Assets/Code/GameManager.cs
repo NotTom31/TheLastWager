@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     {
         SetState(GameState.BEGIN);
         SetState(Turn.PLAYER);
+        CardManager.Instance.RandomizeAllSuitsAnimated();
     }
 
     public void SwitchTurn()
