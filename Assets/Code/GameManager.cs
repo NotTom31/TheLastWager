@@ -14,6 +14,12 @@ public enum GameState
     PLAY
 }
 
+public enum Turn
+{
+    PLAYER,
+    DEVIL
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -21,6 +27,7 @@ public class GameManager : MonoBehaviour
     public static event StateChangeHandler OnStateChange;
 
     public GameState gameState { get; private set; } = GameState.MAIN_MENU;
+    public Turn turn { get; private set; } = Turn.PLAYER;
 
     private void Awake()
     {
@@ -40,5 +47,17 @@ public class GameManager : MonoBehaviour
     {
         gameState = state;
         OnStateChange?.Invoke(state); //prob a better way to do this
+    }
+
+    public void SetState(Turn state)
+    {
+        turn = state;
+        //OnStateChange?.Invoke(state); //prob a better way to do this
+    }
+
+    public void StartGame()
+    {
+        SetState(GameState.BEGIN);
+        SetState(Turn.PLAYER);
     }
 }

@@ -40,6 +40,12 @@ public class MenuManager : MonoBehaviour
         GameManager.Instance.SetState(GameState.BEGIN);
     }
 
+    public void StartNewGame()
+    {
+        GameManager.Instance.StartGame();
+        OpenMultiContract();
+    }
+
     public void OpenCredits()
     {
         SwitchUI("Credits");
@@ -58,6 +64,12 @@ public class MenuManager : MonoBehaviour
     public void OpenMultiContract()
     {
         SwitchUI("MultiContract");
+    }
+
+    public void SelectContract()
+    {
+        SwitchUI("GameUI");
+        GameManager.Instance.SetState(GameState.BET);
     }
 
     public void OpenTutorial()

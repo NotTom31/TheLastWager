@@ -35,41 +35,41 @@ public class Card : MonoBehaviour
 
     private void Update()
     {
-        if (isCardSelected)
+        if (isCardSelected && isPlayersCard)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                FlipCard();
+                //FlipCard();
             }
 
             if (Input.GetKeyDown(KeyCode.C))
             {
-                SetSuit(Suit.Club);
+                //SetSuit(Suit.Club);
             }
 
             if (Input.GetKeyDown(KeyCode.D))
             {
-                SetSuit(Suit.Diamond);
+                //SetSuit(Suit.Diamond);
             }
 
             if (Input.GetKeyDown(KeyCode.H))
             {
-                SetSuit(Suit.Heart);
+                //SetSuit(Suit.Heart);
             }
 
             if (Input.GetKeyDown(KeyCode.S))
             {
-                SetSuit(Suit.Spade);
+                //SetSuit(Suit.Spade);
             }
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 ChangeCardPlayState();
             }
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                CardManager.Instance.RandomizeAllSuitsAnimated();
+                //CardManager.Instance.RandomizeAllSuitsAnimated();
             }
-            if (Input.GetKeyDown(KeyCode.W))
+            /*if (Input.GetKeyDown(KeyCode.W))
             {
                 Debug.Log("Player Hand Cards:");
                 foreach (Card card in CardManager.Instance.playerHandCards)
@@ -93,7 +93,7 @@ public class Card : MonoBehaviour
                 {
                     Debug.Log(card.name + " - " + card.currentSuit);
                 }
-            }
+            }*/
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -159,9 +159,10 @@ public class Card : MonoBehaviour
                 CardManager.Instance.PlayCard(currentSuit, isPlayersCard);
                 break;
             case true:
-                isInPlay = false;
+                Debug.Log("Card already in play " + gameObject.name);
+/*              isInPlay = false;
                 StartCoroutine(PlayCardCoroutine(isInPlay));
-                CardManager.Instance.UnPlayCard(currentSuit, isPlayersCard);
+                CardManager.Instance.UnPlayCard(currentSuit, isPlayersCard);*/
                 break;
         }
     }
