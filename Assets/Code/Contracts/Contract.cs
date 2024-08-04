@@ -18,6 +18,23 @@ public class Contract : MonoBehaviour
     public string[] blurbs { get; private set; }
     public bool[] grayedMatrix { get; private set; } //keeps track of which blurbs are grayed out due to inactivity
 
+    [SerializeField] bool InitOnAwake;
+    [SerializeField] bool ActivateOnStart;
+    private void Awake()
+    {
+        if (InitOnAwake)
+        {
+            InitializeClauses();
+        }
+    }
+    private void Start()
+    {
+        if (ActivateOnStart)
+        {
+            ActivateClauses();
+        }
+    }
+
     public void InitializeClauses()
     {
         clauses = new ContractClause[4];

@@ -49,10 +49,13 @@ public class ContractsManager : MonoBehaviour
         cg.NewNodeByIndex(0, 0, 2, 0, 0); //clubs are worth -2
         cg.NewNodeByIndex(0, 0, 3, 0, 4); //hearts are worth +1 */
 
+        /*
         yield return new WaitForSeconds(2);
         EvaluateCardPlay(Suit.Spade, true);
         yield return new WaitForSeconds(2);
         EvaluateCardPlay(Suit.Heart, false);
+        */
+        yield return null;
     }
 
     public void StartContract()
@@ -70,7 +73,6 @@ public class ContractsManager : MonoBehaviour
         switch (s)
         {
             case Suit.Spade:
-                Debug.Log("play spade");
                 OnSpadesAddition?.Invoke();
                 OnSpadesMultiplication?.Invoke();
                 break;

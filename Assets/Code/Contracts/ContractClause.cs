@@ -26,11 +26,13 @@ public class ContractClause : MonoBehaviour
         }
     }
 
-    //needs to be called before "SetRulesActive" to be effective.
+    //needs to be called before "Activate" to be effective.
     public void Init(int expry, int[] indx, Contract cont)
     {
         expiry = expry;
         indices = indx;
+        ContractGenerator cg = new ContractGenerator();
+        baseNode = cg.NewNodeByIndex(indx);
         myContract = cont;
     }
 
@@ -193,7 +195,6 @@ public class ContractClause : MonoBehaviour
     public void AddConstant()
     {
         ContractsManager.Instance.pointReward += mathConstant;
-        Debug.Log("add const");
     }
     public void MultiplyConstant()
     {
