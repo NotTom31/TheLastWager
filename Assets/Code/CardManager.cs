@@ -47,4 +47,15 @@ public class CardManager : MonoBehaviour
     {
         // Implement play card logic if needed
     }
+
+    public void RandomizeAllCards()
+    {
+        Card[] allCards = FindObjectsOfType<Card>();
+
+        foreach (Card card in allCards)
+        {
+            Suit randomSuit = (Suit)Random.Range(0, System.Enum.GetValues(typeof(Suit)).Length);
+            card.SetSuit(randomSuit);
+        }
+    }
 }

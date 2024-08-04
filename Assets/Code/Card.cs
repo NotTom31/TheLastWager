@@ -61,6 +61,10 @@ public class Card : MonoBehaviour
             {
                 PlayCard();
             }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                CardManager.Instance.RandomizeAllCards();
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
