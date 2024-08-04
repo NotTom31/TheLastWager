@@ -60,4 +60,16 @@ public class GameManager : MonoBehaviour
         SetState(GameState.BEGIN);
         SetState(Turn.PLAYER);
     }
+
+    public void SwitchTurn()
+    {
+        if (turn == Turn.PLAYER)
+        {
+            SetState(Turn.DEVIL);
+        }
+        else
+        {
+            SetState(Turn.PLAYER);
+        }
+    }
 }

@@ -45,6 +45,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        Debug.Log("here");
         GameManager.Instance.StartGame();
         OpenMultiContract();
     }
@@ -91,6 +92,7 @@ public class MenuManager : MonoBehaviour
     public void BeginPlay()
     {
         SwitchUI("GameUI");
+        Debug.Log("start timer");
         StartTimer();
         //GameManager.Instance.turn = Turn.PLAYER;
     }
@@ -143,6 +145,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartTimer()
     {
+        UpdateTimer(60);//temp
         Timer.StartTimer();
     }
 

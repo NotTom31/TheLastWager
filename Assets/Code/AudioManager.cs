@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
         //Fade("MainBase", true);
         //Fade("MainMelody", true);
         yield return new WaitForSeconds(5);
-        TimerObject.Play();
+        //TimerObject.Play();
         Queue("MainGroove", true);
         yield return new WaitForSeconds(11);
         Fade("MainSynth", true);
