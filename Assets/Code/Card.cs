@@ -18,11 +18,13 @@ public class Card : MonoBehaviour
     private float slideDuration = 0.5f;
     private float slideDistance = 5f;
     private Vector3 cardOriginPosition;
+    private Quaternion cardOriginRotation;
 
     private void Start()
     {
         SetSuit(Suit.Heart);
         cardOriginPosition = transform.position;
+        cardOriginRotation = transform.rotation;
     }
 
     private void Update()
@@ -77,8 +79,8 @@ public class Card : MonoBehaviour
 
     public void ResetCard()
     {
-        //set position & rotation to original point
-        //Set card to be unflipped for player and flipped for opponent
+        transform.position = cardOriginPosition;
+        transform.rotation = cardOriginRotation;
     }
 
     public void SetSuit(Suit suit)
@@ -138,7 +140,11 @@ public class Card : MonoBehaviour
     {
         float elapsedTime = 0f;
         Quaternion startRotation = transform.rotation;
-        Quaternion endRotation = startRotation * Quaternion.Euler(0f, 180f, 0f);
+        Quaternion endRotation;
+        if (!isFlipped)
+            endRotation = startRotation * Quaternion.Euler(0f, 180f, 0f);
+        else
+            endRotation = cardOriginRotation;
 
         while (elapsedTime < flipDuration)
         {
