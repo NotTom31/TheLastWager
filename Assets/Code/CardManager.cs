@@ -70,6 +70,8 @@ public class CardManager : MonoBehaviour
         }
 
         OnCardPlayed?.Invoke(selectedCard, isPlayersCard);
+        Debug.Log("here");
+        ContractsManager.Instance.EvaluateCardPlay(suit, isPlayersCard);
     }
 
     public void UnPlayCard(Suit suit, bool isPlayersCard)

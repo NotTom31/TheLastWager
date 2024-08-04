@@ -70,6 +70,7 @@ public class ContractsManager : MonoBehaviour
         switch (s)
         {
             case Suit.Spade:
+                Debug.Log("play spade");
                 OnSpadesAddition?.Invoke();
                 OnSpadesMultiplication?.Invoke();
                 break;

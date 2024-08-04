@@ -193,6 +193,7 @@ public class ContractClause : MonoBehaviour
     public void AddConstant()
     {
         ContractsManager.Instance.pointReward += mathConstant;
+        Debug.Log("add const");
     }
     public void MultiplyConstant()
     {
