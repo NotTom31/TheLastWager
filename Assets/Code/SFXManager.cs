@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SFXManager : MonoBehaviour
 {
+    public static SFXManager Instance;
     List<AudioSource> sfx = new List<AudioSource>();
     List<List<AudioSource>> groups = new List<List<AudioSource>>();
     List<string> ids = new List<string>();
@@ -15,6 +16,24 @@ public class SFXManager : MonoBehaviour
 
     float timer = 0.0f;
     // Start is called before the first frame update
+
+
+    private void Awake()
+    {
+        // Singleton pattern nerdge
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+    }
+
+
+
     void Start()
     {
         foreach (Transform child in transform)
@@ -59,7 +78,7 @@ public class SFXManager : MonoBehaviour
     }
 
 
-    void QueueNextBeat(string id, float pitch = 1f, float randomness = 0.0f, bool randomFromGroup = false)
+    public void QueueNextBeat(string id, float pitch = 1f, float randomness = 0.0f, bool randomFromGroup = false)
     {
         AudioSource targ;
         if (randomFromGroup)
@@ -83,18 +102,18 @@ public class SFXManager : MonoBehaviour
 
 
 
-    AudioSource GetRandomFromGroup(string id)
+    private AudioSource GetRandomFromGroup(string id)
     {
         List<AudioSource> group = groups[ids.IndexOf(id)];
         return group[Random.Range(0, group.Count - 1)];
 
     }
-    void PlayRandomFromGroup(string id, float pitch = 1f, float randomness = 0.0f)
+    public void PlayRandomFromGroup(string id, float pitch = 1f, float randomness = 0.0f)
     {
         PlaySound(GetRandomFromGroup(id).name, pitch, randomness);
 
     }
-    void PlaySound(string id, float pitch = 1f, float randomness = 0.0f)
+    public void PlaySound(string id, float pitch = 1f, float randomness = 0.0f)
     {
 
         AudioSource sound = Find(id);
@@ -105,7 +124,7 @@ public class SFXManager : MonoBehaviour
         }
         sound.Play();
     }
-    AudioSource Find(string id)
+    private AudioSource Find(string id)
     {
         foreach (AudioSource song in sfx)
         {

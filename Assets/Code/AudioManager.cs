@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
+    public Flip TimerObject;
+
     List<AudioSource> music = new List<AudioSource>();
     List<AudioSource> fade_out = new List<AudioSource>();
     List<AudioSource> fade_in = new List<AudioSource>();
@@ -19,6 +22,20 @@ public class AudioManager : MonoBehaviour
     float timer = 0.0f;
     float timer_multiplier = 1.0f;
 
+    private void Awake()
+    {
+        // Singleton pattern nerdge
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,15 +48,16 @@ public class AudioManager : MonoBehaviour
         //StartCoroutine(mus());
     }
 
-    /*IEnumerator mus()
+    IEnumerator mus()
     {
-        Fade("MainBase", true);
-        Fade("MainMelody", true);
+        //Fade("MainBase", true);
+        //Fade("MainMelody", true);
         yield return new WaitForSeconds(5);
+        TimerObject.Play();
         Queue("MainGroove", true);
         yield return new WaitForSeconds(11);
         Fade("MainSynth", true);
-    }*/
+    }
 
     // Update is called once per frame
     void Update()
@@ -49,6 +67,10 @@ public class AudioManager : MonoBehaviour
         {
             foreach(AudioSource q in queue_add)
             {
+                if (!q.isPlaying)
+                {
+                    q.Play();
+                }
                 q.volume = 1.0f;
                 queue_add.Remove(q);
             }
@@ -100,7 +122,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    AudioSource Find(string id)
+    private AudioSource Find(string id)
     {
         foreach (AudioSource song in music)
         {
@@ -113,7 +135,7 @@ public class AudioManager : MonoBehaviour
         return null;
     }
 
-    void Fade(string id, bool on){
+    public void Fade(string id, bool on){
         AudioSource source = Find(id);
         if (on)
         {
@@ -124,7 +146,7 @@ public class AudioManager : MonoBehaviour
             fade_out.Add(source);
         }
     }
-    void Queue(string id, bool on)
+    public void Queue(string id, bool on)
     {
         AudioSource source = Find(id);
         if (on)
@@ -137,12 +159,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void PlayRandom(List<string> from_ids)
+    public void PlayRandom(List<string> from_ids)
     {
         Queue(from_ids[Random.Range(0, from_ids.Count)], true);
     }
 
-    void MuteAll()
+    public void MuteAll()
     {
         foreach(AudioSource song in music)
         {
@@ -154,7 +176,7 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    void SetPitch(float pitch)
+    public void SetPitch(float pitch)
     {
         foreach (AudioSource song in music)
         {
@@ -162,4 +184,6 @@ public class AudioManager : MonoBehaviour
         }
         timer_multiplier = pitch;
     }
+
+
 }

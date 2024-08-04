@@ -2439,6 +2439,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54aa534ca0de9d246bc37a4d62264855, type: 3}
+--- !u!82 &5219567053679184078 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5219567054315237353, guid: 54aa534ca0de9d246bc37a4d62264855, type: 3}
+  m_PrefabInstance: {fileID: 5219567053679184077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8613470892057736109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2446,6 +2451,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1578844242}
     m_Modifications:
+    - target: {fileID: 8613470890770379329, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
+      propertyPath: tracker
+      value: 
+      objectReference: {fileID: 5219567053679184078}
     - target: {fileID: 8613470890770379334, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
       propertyPath: m_RootOrder
       value: 3
