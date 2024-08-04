@@ -143,4 +143,23 @@ public class ContractClause : MonoBehaviour
         Suit[] matrix = { Suit.Spade, Suit.Diamond, Suit.Club, Suit.Heart };
         return matrix[node.formulaID];
     }
+
+    private int EvaluateFormationsInLocation(SymbolNode form, SymbolNode loc)
+    {
+        if (!VerifyNonterminal(form, Nonterminal.Formation) || !VerifyNonterminal(loc, Nonterminal.Location))
+        {
+            Debug.Log("ERROR: Formation node and Location node expected in that order.");
+            return -1;
+        }
+
+        Dictionary<Suit, int> suitCounts = new Dictionary<Suit, int>()
+        {
+            { Suit.Spade, 0 },
+            { Suit.Diamond, 0 },
+            { Suit.Club, 0 },
+            { Suit.Heart, 0 }
+        };
+
+        return 0;
+    }
 }
