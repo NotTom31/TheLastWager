@@ -11,7 +11,8 @@ public enum GameState
     DRAW,
     CONTRACT,
     BET,
-    PLAY
+    PLAY,
+    GAMEOVER
 }
 
 public enum Turn

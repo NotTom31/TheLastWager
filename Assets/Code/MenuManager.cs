@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject MultiContract;
     [SerializeField] GameObject Instructions;
     [SerializeField] GameObject Bet;
+    [SerializeField] GameObject GameOver;
     [SerializeField] TimeTracking Timer;
     [SerializeField] SoulTracking SoulCount;
     [SerializeField] PointTracker points;
@@ -35,6 +36,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI MultiContractClause10;
     [SerializeField] public TextMeshProUGUI MultiContractClause11;
     [SerializeField] public TextMeshProUGUI MultiContractClause12;
+    [Space]
+    [SerializeField] public GameObject WinText;
+    [SerializeField] public GameObject LoseText;
 
     public static MenuManager Instance;
 
@@ -108,7 +112,19 @@ public class MenuManager : MonoBehaviour
     public void OpenMainMenu()
     {
         //Click
+        WinText.SetActive(false);
+        LoseText.SetActive(false);
         SwitchUI("MainMenu");
+    }
+
+    public void OpenGameOver(bool isWin)
+    {
+        GameManager.Instance.SetState(GameState.GAMEOVER);
+        if (isWin)
+            WinText.SetActive(true);
+        else 
+            LoseText.SetActive(true);
+        SwitchUI("GameOver");
     }
 
     public void OpenBet()
@@ -154,22 +170,27 @@ public class MenuManager : MonoBehaviour
         switch (result)
         {
             case 0:
-                SoulCount.SetSoulCount(SoulCount.Souls + betValue);
+                SoulCount.SetSoulCount(SoulCount.Souls + betValue * 2);
                 break;
             case 1:
-                SoulCount.SetSoulCount(SoulCount.Souls - betValue);
+                SoulCount.SetSoulCount(SoulCount.Souls);
                 break;
             case 2:
-                SoulCount.SetSoulCount(SoulCount.Souls);
+                SoulCount.SetSoulCount(SoulCount.Souls + betValue);
                 break;
         }
 
+        minBet += 5;
+        maxBet += 15;
+
         if (SoulCount.Souls >= 100)
         {
+            OpenGameOver(true);
             Debug.Log("WOW");
         }
         else if (SoulCount.Souls <= 0)
         {
+            OpenGameOver(false);
             Debug.Log("Game Over");
         }
     }
@@ -180,7 +201,10 @@ public class MenuManager : MonoBehaviour
         {
             betValue = number;
         }
-            BeginPlay();
+
+        SoulCount.SetSoulCount(SoulCount.Souls - betValue);
+
+        BeginPlay();
     }
 
     public void BeginPlay()
@@ -206,6 +230,7 @@ public class MenuManager : MonoBehaviour
         MultiContract.SetActive(false);
         Instructions.SetActive(false);
         Bet.SetActive(false);
+        GameOver.SetActive(false);
 
         switch (name)
         {
@@ -229,6 +254,9 @@ public class MenuManager : MonoBehaviour
                 break;
             case "BetUI":
                 Bet.SetActive(true);
+                break;
+            case "GameOver":
+                GameOver.SetActive(true);
                 break;
         }
     }
