@@ -45,10 +45,18 @@ public class ContractsManager : MonoBehaviour
     int scriptedClauseCount = 0;
     public void GenerateProspectiveContracts(int numClauses)
     {
-        MenuManager.Instance.contractClause1.text = string.Empty;
-        MenuManager.Instance.contractClause2.text = string.Empty;
-        MenuManager.Instance.contractClause3.text = string.Empty;
-        MenuManager.Instance.contractClause4.text = string.Empty;
+        MenuManager.Instance.MultiContractClause1.text = string.Empty;
+        MenuManager.Instance.MultiContractClause2.text = string.Empty;
+        MenuManager.Instance.MultiContractClause3.text = string.Empty;
+        MenuManager.Instance.MultiContractClause4.text = string.Empty;
+        MenuManager.Instance.MultiContractClause5.text = string.Empty;
+        MenuManager.Instance.MultiContractClause6.text = string.Empty;
+        MenuManager.Instance.MultiContractClause7.text = string.Empty;
+        MenuManager.Instance.MultiContractClause8.text = string.Empty;
+        MenuManager.Instance.MultiContractClause9.text = string.Empty;
+        MenuManager.Instance.MultiContractClause10.text = string.Empty;
+        MenuManager.Instance.MultiContractClause11.text = string.Empty;
+        MenuManager.Instance.MultiContractClause12.text = string.Empty;
 
         prospectiveContracts.Clear();
         for (int i = 0; i < 3; i++)

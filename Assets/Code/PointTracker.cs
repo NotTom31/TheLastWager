@@ -37,6 +37,28 @@ public class PointTracker : MonoBehaviour
         UpdateGUI();
     }
 
+    public int ComparePoints()
+    {
+        if(UserPoints > DevilPoints)
+        {
+            Debug.Log("win");
+            ResetPoints();
+            return 0;
+        }
+        else if (UserPoints < DevilPoints)
+        {
+            Debug.Log("lose");
+            ResetPoints();
+            return 1;
+        }
+        else
+        {
+            Debug.Log("tie");
+            ResetPoints();
+            return 2;
+        }
+    }
+
     public void SetUserPoints(int i)
     {
         UserPoints = i;
