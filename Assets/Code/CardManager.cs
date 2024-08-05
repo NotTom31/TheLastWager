@@ -15,6 +15,7 @@ public class CardManager : MonoBehaviour
 {
     public static CardManager Instance;
     private Card selectedCard;
+    public Card devilSelectedCard;
 
     public List<Card> playerTableCards = new List<Card>();
     public List<Card> playerHandCards = new List<Card>();
@@ -67,6 +68,25 @@ public class CardManager : MonoBehaviour
         {
             devilTableCards.Add(selectedCard);
             devilHandCards.Remove(selectedCard);
+        }
+
+        OnCardPlayed?.Invoke(selectedCard, isPlayersCard);
+        //Debug.Log("here");
+        ContractsManager.Instance.EvaluateCardPlay(suit, isPlayersCard);
+        GameManager.Instance.SwitchTurn();
+    }
+
+    public void PlayCardDevil(Suit suit, bool isPlayersCard)
+    {
+        if (isPlayersCard)
+        {
+            playerTableCards.Add(devilSelectedCard);
+            playerHandCards.Remove(devilSelectedCard);
+        }
+        else
+        {
+            devilTableCards.Add(devilSelectedCard);
+            devilHandCards.Remove(devilSelectedCard);
         }
 
         OnCardPlayed?.Invoke(selectedCard, isPlayersCard);

@@ -71,32 +71,38 @@ public class MenuManager : MonoBehaviour
 
     public void OpenCredits()
     {
+        //Click
         SwitchUI("Credits");
     }
 
     public void OpenMainMenu()
     {
+        //Click
         SwitchUI("MainMenu");
     }
 
     public void OpenBet()
     {
+        //Click
         SwitchUI("BetUI");
     }
 
     public void OpenOneContract()
     {
+        //Click
         SwitchUI("OneContract");
     }
 
 
     public void CloseOneContract()
     {
+        //Click
         SwitchUI("GameUI");
     }
 
     public void OpenMultiContract()
     {
+        //Click
         SwitchUI("MultiContract");
         GameManager.Instance.SetState(GameState.CONTRACT);
     }

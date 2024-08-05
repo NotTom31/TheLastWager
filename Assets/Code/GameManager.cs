@@ -65,7 +65,17 @@ public class GameManager : MonoBehaviour
 
     public void SelectRandDevilCard()
     {
-        Random.Range(0, 4);
+        int i = Random.Range(0, CardManager.Instance.devilHandCards.Count);
+        CardManager.Instance.devilSelectedCard = CardManager.Instance.devilHandCards[i];
+
+        Debug.Log(i + " hey");
+        Debug.Log(CardManager.Instance.devilSelectedCard);
+
+        Card devilCard = CardManager.Instance.devilSelectedCard;
+        Suit devilSuit = devilCard.currentSuit;
+        devilCard.FlipCard();
+        CardManager.Instance.PlayCardDevil(devilSuit, false);
+        
     }
 
     public void SwitchTurn()
@@ -73,6 +83,7 @@ public class GameManager : MonoBehaviour
         if (turn == Turn.PLAYER)
         {
             SetState(Turn.DEVIL);
+            GameManager.Instance.SelectRandDevilCard();
         }
         else
         {

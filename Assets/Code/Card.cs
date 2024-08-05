@@ -149,6 +149,7 @@ public class Card : MonoBehaviour
 
     private void ChangeCardPlayState()
     {
+        //Shuffle sound
         if (isFlipped)
         {
             Debug.Log("Can't play upside down card! " + gameObject.name);
