@@ -10394,6 +10394,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 172955917}
+    - target: {fileID: 7127285323591667312, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
+      propertyPath: m_text
+      value: The Last Wager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127285323591667312, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
+      propertyPath: m_fontSize
+      value: 55.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7127285323654101774, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -11505,6 +11513,10 @@ PrefabInstance:
       propertyPath: TimerObject
       value: 
       objectReference: {fileID: 848058831}
+    - target: {fileID: 8277787561678149277, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: m_Volume
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 8277787561678149277, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
