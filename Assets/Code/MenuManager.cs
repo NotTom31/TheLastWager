@@ -59,6 +59,8 @@ public class MenuManager : MonoBehaviour
     public void OpenGameUI()
     {
         SwitchUI("GameUI");
+        AudioManager.Instance.Fade("AmbianceBase", false);
+        AudioManager.Instance.Fade("IntroBase", true);
         GameManager.Instance.SetState(GameState.BEGIN);
     }
 
