@@ -164,6 +164,9 @@ public class MenuManager : MonoBehaviour
                 break;
         }
 
+        minBet += 5;
+        maxBet += 15;
+
         if (SoulCount.Souls >= 100)
         {
             Debug.Log("WOW");
