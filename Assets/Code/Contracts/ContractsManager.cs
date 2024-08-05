@@ -59,8 +59,10 @@ public class ContractsManager : MonoBehaviour
             {
                 prospectiveContracts[i].SetCode(j, ContractGenerator.PRESET_CLAUSE_CODES[scriptedClauseCount]);
                 scriptedClauseCount++;
-                MenuManager.Instance.UpdateMultiContractText(i * 4 + j, prospectiveContracts[i].blurbs[j]);
             }
+            prospectiveContracts[i].InitializeClauses();
+            for (int j = 0; j < numClauses; j++)
+                MenuManager.Instance.UpdateMultiContractText(i * 4 + j, prospectiveContracts[i].blurbs[j]);
         }
     }
 
