@@ -119,5 +119,6 @@ public class Contract : MonoBehaviour
                 continue;
             cc.Activate();
         }
+        InitBlurbs();
     }
 }
