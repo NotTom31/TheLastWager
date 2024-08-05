@@ -14,10 +14,11 @@ public enum GameState
     PLAY
 }
 
-
-
-
-
+public enum Turn
+{
+    PLAYER,
+    DEVIL
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -30,7 +31,10 @@ public class GameManager : MonoBehaviour
     public delegate void StateChangeHandler(GameState state);
     public static event StateChangeHandler OnStateChange;
 
+    public bool firstRound = true;
+
     public GameState gameState { get; private set; } = GameState.MAIN_MENU;
+    public Turn turn { get; private set; } = Turn.PLAYER;
 
     GameState PrevState = GameState.MAIN_MENU;
     private void Update()
@@ -140,5 +144,78 @@ public class GameManager : MonoBehaviour
     {
         gameState = state;
         OnStateChange?.Invoke(state); //prob a better way to do this
+    }
+
+    public void SetState(Turn state)
+    {
+        turn = state;
+        //OnStateChange?.Invoke(state); //prob a better way to do this
+    }
+
+    public void StartGame()
+    {
+        SetState(GameState.BEGIN);
+        SetState(Turn.PLAYER);
+        if (firstRound)
+        {
+            ContractsManager.Instance.GenerateProspectiveContracts(4);
+            firstRound = false;
+        }
+        else
+        {
+            MenuManager.Instance.CheckWinner();
+            ContractsManager.Instance.GenerateProspectiveContracts(3);
+        }
+        RandomizeWithDelay();
+    }
+
+    public void RandomizeWithDelay()
+    {
+        Invoke("Randomize", 1f);
+    }
+
+    private void Randomize()
+    {
+        CardManager.Instance.RandomizeAllSuitsAnimated();
+    }
+
+    public void SelectRandDevilCard()
+    {
+        int i = Random.Range(0, CardManager.Instance.devilHandCards.Count);
+        CardManager.Instance.devilSelectedCard = CardManager.Instance.devilHandCards[i];
+
+        Debug.Log(i + " hey");
+        Debug.Log(CardManager.Instance.devilSelectedCard);
+
+        Card devilCard = CardManager.Instance.devilSelectedCard;
+        Suit devilSuit = devilCard.currentSuit;
+        devilCard.FlipCard();
+        CardManager.Instance.PlayCardDevil(devilSuit, false);
+        
+    }
+
+    private void NextRound()
+    {
+        MenuManager.Instance.StartNewGame();
+    }
+
+    public void SwitchTurn()
+    {
+        if (CardManager.Instance.devilHandCards.Count <= 0)
+        {
+            NextRound();
+            SetState(Turn.PLAYER);
+        }
+        else if (turn == Turn.PLAYER)
+        {
+            Debug.Log("Devil");
+            SetState(Turn.DEVIL);
+            GameManager.Instance.SelectRandDevilCard();
+        }
+        else
+        {
+            Debug.Log("player");
+            SetState(Turn.PLAYER);
+        }
     }
 }

@@ -15,6 +15,7 @@ public class CardManager : MonoBehaviour
 {
     public static CardManager Instance;
     private Card selectedCard;
+    public Card devilSelectedCard;
 
     public List<Card> playerTableCards = new List<Card>();
     public List<Card> playerHandCards = new List<Card>();
@@ -39,7 +40,7 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
-        RandomizeAllSuitsAnimated();
+        //RandomizeAllSuitsAnimated();
     }
 
     [SerializeField] GameObject PlayerHand;
@@ -72,6 +73,28 @@ public class CardManager : MonoBehaviour
         }
 
         OnCardPlayed?.Invoke(selectedCard, isPlayersCard);
+        //Debug.Log("here");
+        ContractsManager.Instance.EvaluateCardPlay(suit, isPlayersCard);
+        GameManager.Instance.SwitchTurn();
+    }
+
+    public void PlayCardDevil(Suit suit, bool isPlayersCard)
+    {
+        if (isPlayersCard)
+        {
+            playerTableCards.Add(devilSelectedCard);
+            playerHandCards.Remove(devilSelectedCard);
+        }
+        else
+        {
+            devilTableCards.Add(devilSelectedCard);
+            devilHandCards.Remove(devilSelectedCard);
+        }
+
+        OnCardPlayed?.Invoke(selectedCard, isPlayersCard);
+        //Debug.Log("here");
+        ContractsManager.Instance.EvaluateCardPlay(suit, isPlayersCard);
+        GameManager.Instance.SwitchTurn();
     }
 
     public void UnPlayCard(Suit suit, bool isPlayersCard)
@@ -103,18 +126,11 @@ public class CardManager : MonoBehaviour
         {
             card.canClick = false;
             card.ResetCard();
-        }
 
-    }
-
-    public void RandomizeAllSuitsPart2() //This is called by the RandomizeAllCards function above (yes I know it's dumb lol)
-    {
-        Card[] allCards = FindObjectsOfType<Card>();
-
-        foreach (Card card in allCards)
-        {
             Suit randomSuit = (Suit)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Suit)).Length);
             card.SetSuit(randomSuit);
+            Debug.Log(randomSuit + " " + card);
+
 
             if (card.isPlayersCard)
             {
@@ -126,5 +142,27 @@ public class CardManager : MonoBehaviour
                 devilHandCards.Add(card);
             }
         }
+
     }
+
+    //public void RandomizeAllSuitsPart2() //This is called by the RandomizeAllCards function above (yes I know it's dumb lol)
+    //{
+    //    Card[] allCards = FindObjectsOfType<Card>();
+
+    //    foreach (Card card in allCards)
+    //    {
+    //        Suit randomSuit = (Suit)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Suit)).Length);
+    //        card.SetSuit(randomSuit);
+
+    //        if (card.isPlayersCard)
+    //        {
+    //            playerHandCards.Add(card);
+    //            card.canClick = true;
+    //        }
+    //        else
+    //        {
+    //            devilHandCards.Add(card);
+    //        }
+    //    }
+    //}
 }
