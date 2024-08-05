@@ -43,12 +43,11 @@ public class AudioManager : MonoBehaviour
         {
             music.Add(child.GetComponent<AudioSource>());
         }
-        SetPitch(0.5f);
-        Fade("IntroBase", true);
+        Fade("AmbianceBase", true);
         //StartCoroutine(mus());
     }
 
-    IEnumerator mus()
+    /*IEnumerator mus()
     {
         //Fade("MainBase", true);
         //Fade("MainMelody", true);
@@ -57,7 +56,7 @@ public class AudioManager : MonoBehaviour
         Queue("MainGroove", true);
         yield return new WaitForSeconds(11);
         Fade("MainSynth", true);
-    }
+    }*/
 
     // Update is called once per frame
     void Update()

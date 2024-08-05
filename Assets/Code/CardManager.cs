@@ -60,11 +60,13 @@ public class CardManager : MonoBehaviour
     {
         if (isPlayersCard)
         {
+            SFXManager.Instance.QueueNextBeat("PlayerPlay", 1.0f, 0.1f);
             playerTableCards.Add(selectedCard);
             playerHandCards.Remove(selectedCard);
         }
         else
         {
+            SFXManager.Instance.QueueNextBeat("DevilPlay", 1.0f, 0.1f);
             devilTableCards.Add(selectedCard);
             devilHandCards.Remove(selectedCard);
         }
