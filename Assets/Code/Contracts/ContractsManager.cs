@@ -46,6 +46,11 @@ public class ContractsManager : MonoBehaviour
     int scriptedClauseCount = 0;
     public void GenerateProspectiveContracts(int numClauses)
     {
+        MenuManager.Instance.contractClause1.text = string.Empty;
+        MenuManager.Instance.contractClause2.text = string.Empty;
+        MenuManager.Instance.contractClause3.text = string.Empty;
+        MenuManager.Instance.contractClause4.text = string.Empty;
+
         prospectiveContracts.Clear();
         for (int i = 0; i < 3; i++)
         {
@@ -54,9 +59,9 @@ public class ContractsManager : MonoBehaviour
             {
                 prospectiveContracts[i].SetCode(j, ContractGenerator.PRESET_CLAUSE_CODES[scriptedClauseCount]);
                 scriptedClauseCount++;
+                MenuManager.Instance.UpdateMultiContractText(i * 4 + j, prospectiveContracts[i].blurbs[j]);
             }
         }
-        //UPDATE UI TO HAVE PLAYER CHOOSE ONE
     }
 
     //TO DELETE

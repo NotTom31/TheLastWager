@@ -39,7 +39,7 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
-        RandomizeAllSuitsAnimated();
+        //RandomizeAllSuitsAnimated();
     }
 
     [SerializeField] GameObject PlayerHand;
@@ -102,11 +102,13 @@ public class CardManager : MonoBehaviour
 
         foreach (Card card in allCards)
         {
-            Suit randomSuit = (Suit)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Suit)).Length);
-            card.SetSuit(randomSuit);
-
             card.canClick = false;
             card.ResetCard();
+
+            Suit randomSuit = (Suit)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Suit)).Length);
+            card.SetSuit(randomSuit);
+            Debug.Log(randomSuit + " " + card);
+
 
             if (card.isPlayersCard)
             {

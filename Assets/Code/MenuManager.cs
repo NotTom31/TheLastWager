@@ -19,6 +19,21 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI contractClause2;
     [SerializeField] public TextMeshProUGUI contractClause3;
     [SerializeField] public TextMeshProUGUI contractClause4;
+    [Space]
+    [SerializeField] public TextMeshProUGUI MultiContractClause1;
+    [SerializeField] public TextMeshProUGUI MultiContractClause2;
+    [SerializeField] public TextMeshProUGUI MultiContractClause3;
+    [SerializeField] public TextMeshProUGUI MultiContractClause4;
+    [Space]
+    [SerializeField] public TextMeshProUGUI MultiContractClause5;
+    [SerializeField] public TextMeshProUGUI MultiContractClause6;
+    [SerializeField] public TextMeshProUGUI MultiContractClause7;
+    [SerializeField] public TextMeshProUGUI MultiContractClause8;
+    [Space]
+    [SerializeField] public TextMeshProUGUI MultiContractClause9;
+    [SerializeField] public TextMeshProUGUI MultiContractClause10;
+    [SerializeField] public TextMeshProUGUI MultiContractClause11;
+    [SerializeField] public TextMeshProUGUI MultiContractClause12;
 
     public static MenuManager Instance;
 
@@ -190,6 +205,64 @@ public class MenuManager : MonoBehaviour
             case 3:
                 Debug.Log("3");
                 contractClause4.text = s;
+                break;
+            default:
+                Debug.Log("catch");
+                break;
+        }
+    }
+
+    public void UpdateMultiContractText(int i, string s)
+    {
+        switch (i)
+        {
+            case 0:
+                Debug.Log("0");
+                MultiContractClause1.text = s;
+                break;
+            case 1:
+                Debug.Log("1");
+                MultiContractClause2.text = s;
+                break;
+            case 2:
+                Debug.Log("2");
+                MultiContractClause3.text = s;
+                break;
+            case 3:
+                Debug.Log("3");
+                MultiContractClause4.text = s;
+                break;
+            case 4:
+                Debug.Log("4");
+                MultiContractClause5.text = s;
+                break;
+            case 5:
+                Debug.Log("5");
+                MultiContractClause6.text = s;
+                break;
+            case 6:
+                Debug.Log("6");
+                MultiContractClause7.text = s;
+                break;
+            case 7:
+                Debug.Log("7");
+                MultiContractClause8.text = s;
+                break;
+            case 8:
+                Debug.Log("8");
+                MultiContractClause9.text = s;
+                break;
+            case 9:
+                Debug.Log("9");
+                MultiContractClause10.text = s;
+                break;
+            case 10:
+                Debug.Log("10");
+                MultiContractClause11.text = s;
+                break;
+            case 11:
+                Debug.Log("11");
+                MultiContractClause12.text = s;
                 break;
             default:
                 Debug.Log("catch");
