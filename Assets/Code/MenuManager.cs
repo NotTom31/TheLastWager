@@ -107,8 +107,10 @@ public class MenuManager : MonoBehaviour
         GameManager.Instance.SetState(GameState.CONTRACT);
     }
 
-    public void SelectContract()
+    public void SelectContract(int i)
     {
+        ContractsManager.Instance.SelectContract(i);
+        Debug.Log("selected number... " + i);
         SwitchUI("GameUI");
         GameManager.Instance.SetState(GameState.BET);
         OpenBet();

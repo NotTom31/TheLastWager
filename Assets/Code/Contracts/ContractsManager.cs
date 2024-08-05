@@ -25,6 +25,7 @@ public class ContractsManager : MonoBehaviour
     List<Contract> activeContracts = new List<Contract>();
     List<Contract> prospectiveContracts = new List<Contract>();
     [SerializeField] GameObject contractPrefab;
+    [SerializeField] Transform[] paperPositions;
 
     public static ContractsManager Instance;
     private void Awake()
@@ -39,8 +40,6 @@ public class ContractsManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(Instance);
         }
-
-        StartCoroutine(Testing());
     }
 
     int scriptedClauseCount = 0;
@@ -54,33 +53,21 @@ public class ContractsManager : MonoBehaviour
         prospectiveContracts.Clear();
         for (int i = 0; i < 3; i++)
         {
-            prospectiveContracts.Add(Instantiate(contractPrefab).GetComponent<Contract>());
+            prospectiveContracts.Add(Instantiate(contractPrefab, transform).GetComponent<Contract>());
             for (int j = 0; j < numClauses; j++)
             {
                 prospectiveContracts[i].SetCode(j, ContractGenerator.PRESET_CLAUSE_CODES[scriptedClauseCount]);
                 scriptedClauseCount++;
-                MenuManager.Instance.UpdateMultiContractText(i * 4 + j, prospectiveContracts[i].blurbs[j]);
             }
+            prospectiveContracts[i].InitializeClauses();
+            for (int j = 0; j < numClauses; j++)
+                MenuManager.Instance.UpdateMultiContractText(i * 4 + j, prospectiveContracts[i].blurbs[j]);
         }
     }
 
-    //TO DELETE
-    private IEnumerator Testing()
+    public void SelectContract(int i)
     {
-        /*
-        ContractGenerator cg = new ContractGenerator();
-        cg.NewNodeByIndex(0, 0, 0, 0, 4); //spades are worth +1
-        cg.NewNodeByIndex(0, 0, 1, 0, 7); //diamonds are worth +3
-        cg.NewNodeByIndex(0, 0, 2, 0, 0); //clubs are worth -2
-        cg.NewNodeByIndex(0, 0, 3, 0, 4); //hearts are worth +1 */
-
-        /*
-        yield return new WaitForSeconds(2);
-        EvaluateCardPlay(Suit.Spade, true);
-        yield return new WaitForSeconds(2);
-        EvaluateCardPlay(Suit.Heart, false);
-        */
-        yield return null;
+        ActivateContract(prospectiveContracts[i]);
     }
 
     public void ActivateContract(Contract c)
@@ -89,6 +76,11 @@ public class ContractsManager : MonoBehaviour
         activeContracts.Add(c);
 
         OnNewContract?.Invoke();
+
+        c.ActivateClauses();
+        c.transform.position = paperPositions[activeContracts.Count - 1].position;
+        c.transform.rotation = paperPositions[activeContracts.Count - 1].rotation;
+        c.transform.localScale = paperPositions[activeContracts.Count - 1].localScale;
     }
 
     public void NotifyContractExpiry(Contract caller)
