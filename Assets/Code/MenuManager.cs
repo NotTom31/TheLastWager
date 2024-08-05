@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject Bet;
     [SerializeField] TimeTracking Timer;
     [SerializeField] SoulTracking SoulCount;
+    [SerializeField] PointTracker points;
     [SerializeField] public TextMeshProUGUI contractClause1;
     [SerializeField] public TextMeshProUGUI contractClause2;
     [SerializeField] public TextMeshProUGUI contractClause3;
@@ -37,6 +38,14 @@ public class MenuManager : MonoBehaviour
 
     public static MenuManager Instance;
 
+    public int minBet = 5;
+    public int maxBet = 15;
+    private int betValue;
+    public TMP_InputField inputField;
+    public TextMeshProUGUI minBetText;
+    public TextMeshProUGUI maxBetText;
+    public Button betButton;
+
     private void Awake()
     {
         // Singleton pattern
@@ -54,6 +63,25 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         OpenMainMenu();
+        inputField.onValueChanged.AddListener(delegate { ValidateInput(); });
+        betButton.interactable = false;
+    }
+
+    public void ValidateInput()
+    {
+        string input = inputField.text;
+
+        if (int.TryParse(input, out int number))
+        {
+            if (number >= minBet && number <= maxBet)
+            {
+                betButton.interactable = true;
+                return;
+            }
+        }
+
+        // Disable the button if input is not valid
+        betButton.interactable = false;
     }
 
     public void OpenGameUI()
@@ -85,6 +113,8 @@ public class MenuManager : MonoBehaviour
 
     public void OpenBet()
     {
+        minBetText.text = "Minimum bet: " + minBet.ToString();
+        maxBetText.text = "Maximum bet: " + maxBet.ToString();
         //Click
         SwitchUI("BetUI");
     }
@@ -118,10 +148,39 @@ public class MenuManager : MonoBehaviour
         OpenBet();
     }
 
+    public void CheckWinner()
+    {
+        int result = points.ComparePoints();
+        switch (result)
+        {
+            case 0:
+                SoulCount.SetSoulCount(SoulCount.Souls + betValue);
+                break;
+            case 1:
+                SoulCount.SetSoulCount(SoulCount.Souls - betValue);
+                break;
+            case 2:
+                SoulCount.SetSoulCount(SoulCount.Souls);
+                break;
+        }
+
+        if (SoulCount.Souls >= 100)
+        {
+            Debug.Log("WOW");
+        }
+        else if (SoulCount.Souls <= 0)
+        {
+            Debug.Log("Game Over");
+        }
+    }
+
     public void SubmitBet()
     {
-        
-        BeginPlay();
+        if (int.TryParse(inputField.text, out int number))
+        {
+            betValue = number;
+        }
+            BeginPlay();
     }
 
     public void BeginPlay()

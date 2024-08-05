@@ -36,7 +36,7 @@ public class TimeTracking : MonoBehaviour
         while (Timer > 0)
         {
             Timer -= Time.deltaTime;
-            Debug.Log(Timer);
+            //Debug.Log(Timer);
             UpdateGUI();
             yield return null;
         }

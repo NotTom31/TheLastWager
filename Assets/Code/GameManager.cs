@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public delegate void StateChangeHandler(GameState state);
     public static event StateChangeHandler OnStateChange;
 
+    public bool firstRound = true;
+
     public GameState gameState { get; private set; } = GameState.MAIN_MENU;
     public Turn turn { get; private set; } = Turn.PLAYER;
 
@@ -154,8 +156,27 @@ public class GameManager : MonoBehaviour
     {
         SetState(GameState.BEGIN);
         SetState(Turn.PLAYER);
+        if (firstRound)
+        {
+            ContractsManager.Instance.GenerateProspectiveContracts(4);
+            firstRound = false;
+        }
+        else
+        {
+            MenuManager.Instance.CheckWinner();
+            ContractsManager.Instance.GenerateProspectiveContracts(3);
+        }
+        RandomizeWithDelay();
+    }
+
+    public void RandomizeWithDelay()
+    {
+        Invoke("Randomize", 1f);
+    }
+
+    private void Randomize()
+    {
         CardManager.Instance.RandomizeAllSuitsAnimated();
-        ContractsManager.Instance.GenerateProspectiveContracts(4);
     }
 
     public void SelectRandDevilCard()
@@ -173,15 +194,27 @@ public class GameManager : MonoBehaviour
         
     }
 
+    private void NextRound()
+    {
+        MenuManager.Instance.StartNewGame();
+    }
+
     public void SwitchTurn()
     {
-        if (turn == Turn.PLAYER)
+        if (CardManager.Instance.devilHandCards.Count <= 0)
         {
+            NextRound();
+            SetState(Turn.PLAYER);
+        }
+        else if (turn == Turn.PLAYER)
+        {
+            Debug.Log("Devil");
             SetState(Turn.DEVIL);
             GameManager.Instance.SelectRandDevilCard();
         }
         else
         {
+            Debug.Log("player");
             SetState(Turn.PLAYER);
         }
     }
