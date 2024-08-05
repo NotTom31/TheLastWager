@@ -95,6 +95,7 @@ public class ContractGenerator
         cg.NewNodeByIndex(0, 0, 3, 0, 4); //hearts are worth +1 */
 
         //set 1
+
         new int[] { 0, 0, 0, 0, 4 }, //spades are worth +1
         new int[] { 0, 0, 1, 0, 7 }, //diamonds are worth +3
         new int[] { 0, 0, 2, 0, 0 }, //clubs are worth -2
@@ -132,184 +133,254 @@ public class ContractGenerator
 
 
         //set 3
-        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0 }, 
-        //when you play a spade, gain a point for every Heart in your hand.
-        new int[] { 3, 0, 0, 0, 0, 1, 6 },
-        //when you play a spade, opponent gains 2 points
+        new int[] { 0, 0, 1, 0, 3 }, // Spades are worth +2 for each Heart in your hand
+        new int[] { 3, 0, 0, 1, 0, 0, 4, 1, 2, 1, 1 },
+        // When you play a Spade, gain a point for every Heart in your hand
+        new int[] { 3, 0, 0, 1, 0, 1, 1 },
+        // When you play a Spade, gain 2 points
 
-        new int[] { 0, 0, 1, 0, 0 }, //diamonds are worth -2
-        new int[] { 3, 0, 0, 2, 1, 0, 4, 0, 1, 1, 1 }, 
-        //when you play a Club, gain a point for every Diamond on your opponent's side of the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-        //when you play a Heart, opponent gets -2 points
+        new int[] { 3, 0, 0, 1, 0, 1, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 3 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 1, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 1, 4 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 2 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 3 },
+        new int[] { 0, 0, 1, 0, 3 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 8 },
+        new int[] { 3, 0, 1, 0, 0, 0, 0, 1, 4 },
+        new int[] { 0, 0, 1, 0, 0 },
+        new int[] { 3, 0, 0, 1, 0, 0, 0, 3, 5 },
+        new int[] { 0, 0, 2, 0, 0 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 9 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 7 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 3, 4 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 1, 3 },
+        new int[] { 0, 0, 1, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 0, 6 },
+        new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 0, 2 },
+        new int[] { 0, 0, 0, 0, 0 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 7 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 1, 1 },
+        new int[] { 0, 0, 3, 0, 2 },
+        new int[] { 3, 0, 0, 1, 0, 0, 1, 1, 0 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 0, 0, 0, 0, 1 },
 
-        new int[] { 0, 0, 2, 0, 6 }, //clubs are worth +2
-        new int[] { 3, 0, 0, 3, 1, 0, 1, 0, 2, 2}, 
-        //when you play a Heart, lose a point for every Club on the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
 
-        //set 4
-        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0 }, 
-        //when you play a spade, gain a point for every Heart in your hand.
-        new int[] { 3, 0, 0, 0, 0, 1, 6 },
-        //when you play a spade, opponent gains 2 points
 
-        new int[] { 0, 0, 1, 0, 0 }, //diamonds are worth -2
-        new int[] { 3, 0, 0, 2, 1, 0, 4, 0, 1, 1, 1 }, 
-        //when you play a Club, gain a point for every Diamond on your opponent's side of the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-        //when you play a Heart, opponent gets -2 points
+        //repeating stuff that works so the game doesnt stop working
 
-        new int[] { 0, 0, 2, 0, 6 }, //clubs are worth +2
-        new int[] { 3, 0, 0, 3, 1, 0, 1, 0, 2, 2}, 
-        //when you play a Heart, lose a point for every Club on the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-
-        //set 5
-        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0 }, 
-        //when you play a spade, gain a point for every Heart in your hand.
-        new int[] { 3, 0, 0, 0, 0, 1, 6 },
-        //when you play a spade, opponent gains 2 points
-
-        new int[] { 0, 0, 1, 0, 0 }, //diamonds are worth -2
-        new int[] { 3, 0, 0, 2, 1, 0, 4, 0, 1, 1, 1 }, 
-        //when you play a Club, gain a point for every Diamond on your opponent's side of the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-        //when you play a Heart, opponent gets -2 points
-
-        new int[] { 0, 0, 2, 0, 6 }, //clubs are worth +2
-        new int[] { 3, 0, 0, 3, 1, 0, 1, 0, 2, 2}, 
-        //when you play a Heart, lose a point for every Club on the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-
-        //set 6
-        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0 }, 
-        //when you play a spade, gain a point for every Heart in your hand.
-        new int[] { 3, 0, 0, 0, 0, 1, 6 },
-        //when you play a spade, opponent gains 2 points
-
-        new int[] { 0, 0, 1, 0, 0 }, //diamonds are worth -2
-        new int[] { 3, 0, 0, 2, 1, 0, 4, 0, 1, 1, 1 }, 
-        //when you play a Club, gain a point for every Diamond on your opponent's side of the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-        //when you play a Heart, opponent gets -2 points
-
-        new int[] { 0, 0, 2, 0, 6 }, //clubs are worth +2
-        new int[] { 3, 0, 0, 3, 1, 0, 1, 0, 2, 2}, 
-        //when you play a Heart, lose a point for every Club on the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-
-        //set 7
-        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0 }, 
-        //when you play a spade, gain a point for every Heart in your hand.
-        new int[] { 3, 0, 0, 0, 0, 1, 6 },
-        //when you play a spade, opponent gains 2 points
-
-        new int[] { 0, 0, 1, 0, 0 }, //diamonds are worth -2
-        new int[] { 3, 0, 0, 2, 1, 0, 4, 0, 1, 1, 1 }, 
-        //when you play a Club, gain a point for every Diamond on your opponent's side of the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-        //when you play a Heart, opponent gets -2 points
-
-        new int[] { 0, 0, 2, 0, 6 }, //clubs are worth +2
-        new int[] { 3, 0, 0, 3, 1, 0, 1, 0, 2, 2}, 
-        //when you play a Heart, lose a point for every Club on the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-
-        //set 8
-        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0 }, 
-        //when you play a spade, gain a point for every Heart in your hand.
-        new int[] { 3, 0, 0, 0, 0, 1, 6 },
-        //when you play a spade, opponent gains 2 points
-
-        new int[] { 0, 0, 1, 0, 0 }, //diamonds are worth -2
-        new int[] { 3, 0, 0, 2, 1, 0, 4, 0, 1, 1, 1 }, 
-        //when you play a Club, gain a point for every Diamond on your opponent's side of the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-        //when you play a Heart, opponent gets -2 points
-
-        new int[] { 0, 0, 2, 0, 6 }, //clubs are worth +2
-        new int[] { 3, 0, 0, 3, 1, 0, 1, 0, 2, 2}, 
-        //when you play a Heart, lose a point for every Club on the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-
-        //set 9
-        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0 }, 
-        //when you play a spade, gain a point for every Heart in your hand.
-        new int[] { 3, 0, 0, 0, 0, 1, 6 },
-        //when you play a spade, opponent gains 2 points
-
-        new int[] { 0, 0, 1, 0, 0 }, //diamonds are worth -2
-        new int[] { 3, 0, 0, 2, 1, 0, 4, 0, 1, 1, 1 }, 
-        //when you play a Club, gain a point for every Diamond on your opponent's side of the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-        //when you play a Heart, opponent gets -2 points
-
-        new int[] { 0, 0, 2, 0, 6 }, //clubs are worth +2
-        new int[] { 3, 0, 0, 3, 1, 0, 1, 0, 2, 2}, 
-        //when you play a Heart, lose a point for every Club on the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-
-        //set 10
-        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0 }, 
-        //when you play a spade, gain a point for every Heart in your hand.
-        new int[] { 3, 0, 0, 0, 0, 1, 6 },
-        //when you play a spade, opponent gains 2 points
-
-        new int[] { 0, 0, 1, 0, 0 }, //diamonds are worth -2
-        new int[] { 3, 0, 0, 2, 1, 0, 4, 0, 1, 1, 1 }, 
-        //when you play a Club, gain a point for every Diamond on your opponent's side of the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-        //when you play a Heart, opponent gets -2 points
-
-        new int[] { 0, 0, 2, 0, 6 }, //clubs are worth +2
-        new int[] { 3, 0, 0, 3, 1, 0, 1, 0, 2, 2}, 
-        //when you play a Heart, lose a point for every Club on the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-
-        //set 11
-        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0 }, 
-        //when you play a spade, gain a point for every Heart in your hand.
-        new int[] { 3, 0, 0, 0, 0, 1, 6 },
-        //when you play a spade, opponent gains 2 points
-
-        new int[] { 0, 0, 1, 0, 0 }, //diamonds are worth -2
-        new int[] { 3, 0, 0, 2, 1, 0, 4, 0, 1, 1, 1 }, 
-        //when you play a Club, gain a point for every Diamond on your opponent's side of the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-        //when you play a Heart, opponent gets -2 points
-
-        new int[] { 0, 0, 2, 0, 6 }, //clubs are worth +2
-        new int[] { 3, 0, 0, 3, 1, 0, 1, 0, 2, 2}, 
-        //when you play a Heart, lose a point for every Club on the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-
-        //set 13
-        new int[] { 0, 0, 3, 0, 4 }, //hearts are worth +1
-        new int[] { 3, 0, 0, 0, 1, 0, 4, 0, 3, 0, 0 }, 
-        //when you play a spade, gain a point for every Heart in your hand.
-        new int[] { 3, 0, 0, 0, 0, 1, 6 },
-        //when you play a spade, opponent gains 2 points
-
-        new int[] { 0, 0, 1, 0, 0 }, //diamonds are worth -2
-        new int[] { 3, 0, 0, 2, 1, 0, 4, 0, 1, 1, 1 }, 
-        //when you play a Club, gain a point for every Diamond on your opponent's side of the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
-        //when you play a Heart, opponent gets -2 points
-
-        new int[] { 0, 0, 2, 0, 6 }, //clubs are worth +2
-        new int[] { 3, 0, 0, 3, 1, 0, 1, 0, 2, 2}, 
-        //when you play a Heart, lose a point for every Club on the board.
-        new int[] { 3, 0, 0, 3, 0, 1, 0 },
+        new int[] { 3, 0, 0, 1, 0, 1, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 3 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 1, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 1, 4 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 2 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 3 },
+        new int[] { 0, 0, 1, 0, 3 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 8 },
+        new int[] { 3, 0, 1, 0, 0, 0, 0, 1, 4 },
+        new int[] { 0, 0, 1, 0, 0 },
+        new int[] { 3, 0, 0, 1, 0, 0, 0, 3, 5 },
+        new int[] { 0, 0, 2, 0, 0 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 9 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 7 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 3, 4 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 1, 3 },
+        new int[] { 0, 0, 1, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 0, 6 },
+        new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 0, 2 },
+        new int[] { 0, 0, 0, 0, 0 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 7 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 1, 1 },
+        new int[] { 0, 0, 3, 0, 2 },
+        new int[] { 3, 0, 0, 1, 0, 0, 1, 1, 0 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 0, 0, 0, 0, 1 },        new int[] { 3, 0, 0, 1, 0, 1, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 3 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 1, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 1, 4 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 2 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 3 },
+        new int[] { 0, 0, 1, 0, 3 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 8 },
+        new int[] { 3, 0, 1, 0, 0, 0, 0, 1, 4 },
+        new int[] { 0, 0, 1, 0, 0 },
+        new int[] { 3, 0, 0, 1, 0, 0, 0, 3, 5 },
+        new int[] { 0, 0, 2, 0, 0 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 9 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 7 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 3, 4 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 1, 3 },
+        new int[] { 0, 0, 1, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 0, 6 },
+        new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 0, 2 },
+        new int[] { 0, 0, 0, 0, 0 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 7 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 1, 1 },
+        new int[] { 0, 0, 3, 0, 2 },
+        new int[] { 3, 0, 0, 1, 0, 0, 1, 1, 0 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 0, 0, 0, 0, 1 },
+                new int[] { 3, 0, 0, 1, 0, 1, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 3 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 1, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 1, 4 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 2 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 3 },
+        new int[] { 0, 0, 1, 0, 3 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 8 },
+        new int[] { 3, 0, 1, 0, 0, 0, 0, 1, 4 },
+        new int[] { 0, 0, 1, 0, 0 },
+        new int[] { 3, 0, 0, 1, 0, 0, 0, 3, 5 },
+        new int[] { 0, 0, 2, 0, 0 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 9 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 7 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 3, 4 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 1, 3 },
+        new int[] { 0, 0, 1, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 0, 6 },
+        new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 0, 2 },
+        new int[] { 0, 0, 0, 0, 0 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 7 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 1, 1 },
+        new int[] { 0, 0, 3, 0, 2 },
+        new int[] { 3, 0, 0, 1, 0, 0, 1, 1, 0 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 0, 0, 0, 0, 1 },
+                new int[] { 3, 0, 0, 1, 0, 1, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 3 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 1, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 1, 4 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 2 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 3 },
+        new int[] { 0, 0, 1, 0, 3 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 8 },
+        new int[] { 3, 0, 1, 0, 0, 0, 0, 1, 4 },
+        new int[] { 0, 0, 1, 0, 0 },
+        new int[] { 3, 0, 0, 1, 0, 0, 0, 3, 5 },
+        new int[] { 0, 0, 2, 0, 0 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 9 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 7 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 3, 4 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 1, 3 },
+        new int[] { 0, 0, 1, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 0, 6 },
+        new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 0, 2 },
+        new int[] { 0, 0, 0, 0, 0 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 7 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 1, 1 },
+        new int[] { 0, 0, 3, 0, 2 },
+        new int[] { 3, 0, 0, 1, 0, 0, 1, 1, 0 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 0, 0, 0, 0, 1 },
+                new int[] { 3, 0, 0, 1, 0, 1, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 3 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 1, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 1, 4 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 2 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 3 },
+        new int[] { 0, 0, 1, 0, 3 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 8 },
+        new int[] { 3, 0, 1, 0, 0, 0, 0, 1, 4 },
+        new int[] { 0, 0, 1, 0, 0 },
+        new int[] { 3, 0, 0, 1, 0, 0, 0, 3, 5 },
+        new int[] { 0, 0, 2, 0, 0 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 9 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 7 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 3, 4 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 1, 3 },
+        new int[] { 0, 0, 1, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 0, 6 },
+        new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 0, 2 },
+        new int[] { 0, 0, 0, 0, 0 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 7 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 1, 1 },
+        new int[] { 0, 0, 3, 0, 2 },
+        new int[] { 3, 0, 0, 1, 0, 0, 1, 1, 0 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 0, 0, 0, 0, 1 },
+                new int[] { 3, 0, 0, 1, 0, 1, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 5 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 3 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 1, 5 },
+        new int[] { 0, 0, 1, 0, 1 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 1, 4 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 2 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 3 },
+        new int[] { 0, 0, 1, 0, 3 },
+        new int[] { 3, 0, 0, 0, 0, 1, 1, 0, 5 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 8 },
+        new int[] { 3, 0, 1, 0, 0, 0, 0, 1, 4 },
+        new int[] { 0, 0, 1, 0, 0 },
+        new int[] { 3, 0, 0, 1, 0, 0, 0, 3, 5 },
+        new int[] { 0, 0, 2, 0, 0 },
+        new int[] { 3, 0, 0, 0, 0, 1, 0, 0, 9 },
+        new int[] { 0, 0, 1, 0, 0, 0, 1, 2, 7 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 3, 4 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 1, 3 },
+        new int[] { 0, 0, 1, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 0, 6 },
+        new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        new int[] { 4, 0, 0, 2, 0, 1, 0, 0, 2 },
+        new int[] { 0, 0, 0, 0, 0 },
+        new int[] { 0, 0, 1, 0, 1, 0, 0, 0, 7 },
+        new int[] { 4, 0, 0, 0, 0, 1, 0, 0, 4 },
+        new int[] { 3, 0, 0, 2, 0, 1, 0, 1, 1 },
+        new int[] { 0, 0, 3, 0, 2 },
+        new int[] { 3, 0, 0, 1, 0, 0, 1, 1, 0 },
+        new int[] { 0, 0, 1, 0, 2 },
+        new int[] { 0, 0, 0, 0, 1 },
 
     };
 }

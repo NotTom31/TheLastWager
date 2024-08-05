@@ -11692,10 +11692,46 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7898429578227301044, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898429578278904406, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898429578398512516, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7898429578708410876, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
       propertyPath: TimerObject
       value: 
       objectReference: {fileID: 848058831}
+    - target: {fileID: 7898429578711777404, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898429578865047025, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898429578946469063, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898429579203944598, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898429579524647522, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898429580058482635, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8277787561678149277, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
       propertyPath: m_Volume
       value: 0.25
