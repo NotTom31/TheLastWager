@@ -154,13 +154,13 @@ public class MenuManager : MonoBehaviour
         switch (result)
         {
             case 0:
-                SoulCount.SetSoulCount(SoulCount.Souls + betValue);
+                SoulCount.SetSoulCount(SoulCount.Souls + betValue * 2);
                 break;
             case 1:
-                SoulCount.SetSoulCount(SoulCount.Souls - betValue);
+                SoulCount.SetSoulCount(SoulCount.Souls);
                 break;
             case 2:
-                SoulCount.SetSoulCount(SoulCount.Souls);
+                SoulCount.SetSoulCount(SoulCount.Souls + betValue);
                 break;
         }
 
@@ -180,7 +180,10 @@ public class MenuManager : MonoBehaviour
         {
             betValue = number;
         }
-            BeginPlay();
+
+        SoulCount.SetSoulCount(SoulCount.Souls - betValue);
+
+        BeginPlay();
     }
 
     public void BeginPlay()
