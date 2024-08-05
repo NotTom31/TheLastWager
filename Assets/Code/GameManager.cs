@@ -60,6 +60,12 @@ public class GameManager : MonoBehaviour
         SetState(GameState.BEGIN);
         SetState(Turn.PLAYER);
         CardManager.Instance.RandomizeAllSuitsAnimated();
+        ContractsManager.Instance.GenerateProspectiveContracts(4);
+    }
+
+    public void SelectRandDevilCard()
+    {
+        Random.Range(0, 4);
     }
 
     public void SwitchTurn()

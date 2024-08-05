@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: {fileID: 0}
   pointReward: 0
+  contractPrefab: {fileID: 7732390039030578356, guid: 902c6e5c1275e2e43aeb665f72b96eee, type: 3}

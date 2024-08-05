@@ -39,7 +39,7 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
-        RandomizeAllSuitsAnimated();
+        //RandomizeAllSuitsAnimated();
     }
 
     [SerializeField] GameObject PlayerHand;
