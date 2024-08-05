@@ -11309,6 +11309,18 @@ PrefabInstance:
       propertyPath: paperPositions.Array.data[4]
       value: 
       objectReference: {fileID: 1152755776}
+    - target: {fileID: 66869674539120050, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 605325136431519713, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526913210712348111, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2734664974496958476, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
       propertyPath: m_Name
       value: ManagerParent
@@ -11365,6 +11377,22 @@ PrefabInstance:
       propertyPath: PlayerHand
       value: 
       objectReference: {fileID: 423883667}
+    - target: {fileID: 4764595525856779268, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032554582350685253, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476652980591564881, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520645306507446585, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
       propertyPath: Bet
       value: 
@@ -11469,9 +11497,17 @@ PrefabInstance:
       propertyPath: tracker
       value: 
       objectReference: {fileID: 1349582570}
+    - target: {fileID: 6928447674517471789, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7898429578708410876, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
       propertyPath: TimerObject
       value: 
       objectReference: {fileID: 848058831}
+    - target: {fileID: 8277787561678149277, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
