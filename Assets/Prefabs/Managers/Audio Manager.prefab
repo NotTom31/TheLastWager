@@ -43,7 +43,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 89ab2990be572db44ad0876c57eff132, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
   Loop: 0
@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82085d469a84ff742a117a0cecdbdbe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimerObject: {fileID: 0}
   tracker: {fileID: 5219567054315237353}
 --- !u!1 &5219567052969588828
 GameObject:
@@ -1508,7 +1509,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5795b3c5e4e0e974f8c21f257945a58b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
   Loop: 0
