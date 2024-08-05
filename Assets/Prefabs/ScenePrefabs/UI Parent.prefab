@@ -1083,8 +1083,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Evan Charfauros: \nProgramming, Design\nThomas Mezzie:\nProgramming, Design,
-    Level Design\nBlake Hunter:\nArtist\nHadey Lastname:\nMusic, Sound Programming,
-    VFX, Design"
+    Level Design\nBlake Hunter:\nArtist\nHadey:\nMusic, Sound Programming, VFX, Design"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94fad8ba83d3e1f4e8a146bcf7eee08c, type: 2}
   m_sharedMaterial: {fileID: 4361828980217189180, guid: 94fad8ba83d3e1f4e8a146bcf7eee08c, type: 2}
@@ -1719,7 +1718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -248, y: 230}
+  m_AnchoredPosition: {x: -364, y: 303}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6009975950885258401
@@ -1777,13 +1776,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -4325,11 +4324,34 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hit Play
+  m_text: 'The Last Wager: Game Rules
 
-    Earn Points
 
-    Win'
+    Choose a Contract: At the start of each
+    round, select one of three contracts. Each contract modifies the game rules for
+    all players.
+
+
+    Bet Soul Fragments: Analyze your deck with the current contract
+    in mind and bet soul fragments on your chances to score higher. Your opponent
+    must match your bet.
+
+
+    Play Cards: Players take turns playing one card at
+    a time until all cards have been played.
+
+
+    Tally Scores: After all cards
+    are played, tally the scores. The player with the highest score wins the soul
+    fragments bet.
+
+
+    Choose a New Contract: After each round, choose a new contract.
+    Contracts stack, adding cumulative effects to the game.
+
+
+    Win the Game: The
+    first player to accumulate 100 soul fragments wins.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94fad8ba83d3e1f4e8a146bcf7eee08c, type: 2}
   m_sharedMaterial: {fileID: 4361828980217189180, guid: 94fad8ba83d3e1f4e8a146bcf7eee08c, type: 2}
@@ -4356,7 +4378,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4433,7 +4455,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -364, y: 230}
+  m_AnchoredPosition: {x: -498, y: 303}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &613058638507376340
@@ -4491,13 +4513,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -7303,7 +7325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Devil's Profit
+  m_text: The Last Wager
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94fad8ba83d3e1f4e8a146bcf7eee08c, type: 2}
   m_sharedMaterial: {fileID: 4361828980217189180, guid: 94fad8ba83d3e1f4e8a146bcf7eee08c, type: 2}
@@ -7330,7 +7352,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.3
+  m_fontSize: 55.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8214,7 +8236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -248, y: 170}
+  m_AnchoredPosition: {x: -364, y: 243}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &180313609659850692
@@ -8254,8 +8276,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284506208
-  m_fontColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+    rgba: 4293256677
+  m_fontColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8272,13 +8294,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -8326,7 +8348,7 @@ GameObject:
   - component: {fileID: 8136774232442480779}
   - component: {fileID: 6015626483455654358}
   m_Layer: 5
-  m_Name: Win Text (1)
+  m_Name: Lose Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8796,7 +8818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -364, y: 170}
+  m_AnchoredPosition: {x: -498, y: 243}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6894440113690207829
@@ -8836,8 +8858,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284506208
-  m_fontColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+    rgba: 4293256677
+  m_fontColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8854,13 +8876,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535

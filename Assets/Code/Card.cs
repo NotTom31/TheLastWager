@@ -35,7 +35,7 @@ public class Card : MonoBehaviour
 
     private void Update()
     {
-        if (isCardSelected && isPlayersCard)
+        if (isCardSelected && isPlayersCard && GameManager.Instance.gameState == GameState.PLAY)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -61,7 +61,7 @@ public class Card : MonoBehaviour
             {
                 //SetSuit(Suit.Spade);
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetMouseButtonDown(0))
             {
                 ChangeCardPlayState();
             }
