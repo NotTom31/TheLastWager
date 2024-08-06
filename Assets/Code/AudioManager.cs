@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
     List<AudioSource> queue_add = new List<AudioSource>();
     List<AudioSource> queue_remove = new List<AudioSource>();
 
-    const float FADE_SPEED = 0.1f;
+    const float FADE_SPEED = 0.5f;
     public AudioSource tracker;
 
     float prev_progress = 0.0f;
@@ -97,27 +97,27 @@ public class AudioManager : MonoBehaviour
             }
         }
 
-        if (fade_out.Count > 0)
+    if (fade_out.Count > 0)
+    {
+        foreach (AudioSource fade in fade_out)
         {
-            foreach (AudioSource fade in fade_out)
+            if (fade.volume > 0.0f)
             {
-                if (fade.volume > 0.0f)
-                {
-                    fade.volume -= Time.deltaTime * FADE_SPEED;
-                }
-                else
-                {
-                    fade.volume = 0.0f;
-                    fade_out.Remove(fade);
-                }
+                fade.volume -= Time.deltaTime * FADE_SPEED;
+            }
+            else
+            {
+                fade.volume = 0.0f;
+                fade_out.Remove(fade);
             }
         }
+    }
         
-        if(tracker.time < prev_progress)
-        {
-            timer = Time.deltaTime;
-        }
-        prev_progress = tracker.time;
+    if(tracker.time < prev_progress)
+    {
+        timer = Time.deltaTime;
+    }
+    prev_progress = tracker.time;
     }
 
 

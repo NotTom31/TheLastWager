@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Card : MonoBehaviour
 {
@@ -20,9 +21,13 @@ public class Card : MonoBehaviour
     private float slideDistance = 1f;
     private Vector3 cardOriginPosition;
     private Quaternion cardOriginRotation;
+    public TextMeshPro Indicator;
 
+
+    private bool added = false;
     private void Start()
     {
+        Indicator = GetComponentInChildren<TextMeshPro>();
         SetSuit(Suit.Heart);
         cardOriginPosition = transform.position;
         cardOriginRotation = transform.rotation;
@@ -35,6 +40,12 @@ public class Card : MonoBehaviour
 
     private void Update()
     {
+        if (!added) {
+            print(CardManager.Instance.cardGroup.Count);
+            CardManager.Instance.cardGroup.Add(this);
+            Indicator.text = CardManager.Instance.card_values[0].ToString();
+            added = true;
+        }
         if (isCardSelected && isPlayersCard && GameManager.Instance.gameState == GameState.PLAY)
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -245,15 +256,19 @@ public class Card : MonoBehaviour
         switch (currentSuit)
         {
             case Suit.Club:
+                if (CardManager.Instance.card_values.Count > 0) Indicator.text = CardManager.Instance.card_values[0].ToString();
                 Club.SetActive(true);
                 break;
             case Suit.Diamond:
+                if (CardManager.Instance.card_values.Count > 0) Indicator.text = CardManager.Instance.card_values[1].ToString();
                 Diamond.SetActive(true);
                 break;
             case Suit.Heart:
+                if (CardManager.Instance.card_values.Count > 0) Indicator.text = CardManager.Instance.card_values[2].ToString();
                 Heart.SetActive(true);
                 break;
             case Suit.Spade:
+                if (CardManager.Instance.card_values.Count > 0) Indicator.text = CardManager.Instance.card_values[3].ToString();
                 Spade.SetActive(true);
                 break;
         }

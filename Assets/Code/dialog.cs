@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class dialog : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // i dont care anyomre
     List<string> dialog1 = new List<string>();
     List<string> dialog2 = new List<string>();
     List<string> dialog3 = new List<string>();
@@ -88,6 +88,7 @@ public class dialog : MonoBehaviour
     
     void start_diag(List<string> diag)
     {
+        diag.Add("");
         queue.AddRange(diag);
     }
 

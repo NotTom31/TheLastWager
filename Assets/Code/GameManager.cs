@@ -23,10 +23,10 @@ public enum Turn
 
 public class GameManager : MonoBehaviour
 {
-    int DrawCount = 0;
-    int ContractCount = 0;
-    int BetCount = 0;
-    int PlayCount = 0;
+    public int DrawCount = 0;
+    public int ContractCount = 0;
+    public int BetCount = 0;
+    public  int PlayCount = 0;
 
     public static GameManager Instance;
     public delegate void StateChangeHandler(GameState state);
@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     public Turn turn { get; private set; } = Turn.PLAYER;
 
     GameState PrevState = GameState.MAIN_MENU;
+
+
     private void Update()
     {
         if (PrevState != gameState)
@@ -59,8 +61,9 @@ public class GameManager : MonoBehaviour
 
             if (gameState == GameState.CONTRACT)
             {
-                SFXManager.Instance.QueueNextBeat("Paper", 1.0f, 0.3f, true);
+                SFXManager.Instance.PlayRandomFromGroup("Paper", 1.0f, 0.3f);
                 ContractCount++;
+                Debug.Log("cc" + ContractCount.ToString());
                 if(ContractCount == 1)
                 {
                     AudioManager.Instance.Queue("IntroHeartbeat", true);
@@ -120,7 +123,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(16.0f);
         AudioManager.Instance.Queue("TimerStart", true);
-        AudioManager.Instance.Queue("TimerBass", true);
+        AudioManager.Instance.Queue("TimerBase", true);
         AudioManager.Instance.Queue("IntroBase", false);
         AudioManager.Instance.Queue("IntroHeartbeat", false);
         AudioManager.Instance.Queue("IntroOctUp", false);

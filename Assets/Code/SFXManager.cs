@@ -45,15 +45,17 @@ public class SFXManager : MonoBehaviour
             else
             {
                 List<AudioSource> ot = new List<AudioSource>();
-                foreach (AudioSource sound in transform)
+                foreach (Transform sound in child.transform)
                 {
                     sfx.Add(sound.GetComponent<AudioSource>());
                     ot.Add(sound.GetComponent<AudioSource>());
                 }
                 ids.Add(child.name);
+                Debug.Log("ids: " + ids.ToString());
                 groups.Add(ot);
             }
         }
+        Debug.Log("ids: " + ids.ToString());
 
     }
 
@@ -83,6 +85,7 @@ public class SFXManager : MonoBehaviour
         AudioSource targ;
         if (randomFromGroup)
         {
+            Debug.Log("ids: " + ids.ToString());
             targ = GetRandomFromGroup(id);
         }
         else
@@ -104,8 +107,17 @@ public class SFXManager : MonoBehaviour
 
     private AudioSource GetRandomFromGroup(string id)
     {
-        List<AudioSource> group = groups[ids.IndexOf(id)];
-        return group[Random.Range(0, group.Count - 1)];
+        if (ids.IndexOf(id) == -1)
+        {
+            print("idnotexist: " + id);
+            return new AudioSource();
+        }
+        else
+        {
+            List<AudioSource> group = groups[ids.IndexOf(id)];
+            return group[Random.Range(0, group.Count - 1)];
+
+        }
 
     }
     public void PlayRandomFromGroup(string id, float pitch = 1f, float randomness = 0.0f)

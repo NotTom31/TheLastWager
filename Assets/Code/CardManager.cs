@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public enum Suit
 {
@@ -23,6 +24,8 @@ public class CardManager : MonoBehaviour
     public List<Card> devilHandCards = new List<Card>();
 
     public event Action<Card, bool> OnCardPlayed;
+    public List<float> card_values = new List<float>();
+    public List<Card> cardGroup = new List<Card>(50);
 
     private void Awake()
     {
@@ -41,6 +44,33 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         //RandomizeAllSuitsAnimated();
+        for (int i = 0; i <= 3; i++)
+        {
+            print("hiiiiiii");
+            card_values.Add(0f);
+        }
+
+    }
+
+    private void Update()
+    {
+        foreach(Card card in cardGroup)
+        {
+            int i = 0;
+            if (card.currentSuit == Suit.Club) {i = 0;}
+            if (card.currentSuit == Suit.Diamond) {i = 1;}
+            if (card.currentSuit == Suit.Diamond) {i = 2;}
+            if (card.currentSuit == Suit.Diamond) {i = 3;}
+
+            if (card_values[i] >= 0f)
+            {
+                card.Indicator.text = "+" + card_values[i].ToString();
+            }
+            else
+            {
+                card.Indicator.text = card_values[i].ToString();
+            }
+        }
     }
 
     [SerializeField] GameObject PlayerHand;

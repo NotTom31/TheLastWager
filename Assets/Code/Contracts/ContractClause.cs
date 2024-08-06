@@ -131,15 +131,19 @@ public class ContractClause : MonoBehaviour
                     {
                         case Suit.Spade:
                             ContractsManager.Instance.OnSpadesAddition += AddConstant;
+                            CardManager.Instance.card_values[3] += mathConstant;
                             break;
                         case Suit.Diamond:
                             ContractsManager.Instance.OnDiamondsAddition += AddConstant;
+                            CardManager.Instance.card_values[1] += mathConstant;
                             break;
                         case Suit.Club:
                             ContractsManager.Instance.OnClubsAddition += AddConstant;
+                            CardManager.Instance.card_values[0] += mathConstant;
                             break;
                         case Suit.Heart:
                             ContractsManager.Instance.OnHeartsAddition += AddConstant;
+                            CardManager.Instance.card_values[2] += mathConstant;
                             break;
                     }
                 }
@@ -161,6 +165,7 @@ public class ContractClause : MonoBehaviour
                             break;
                     }
                 }
+                
                 break;
             case 1: //[SUIT] is worth [OPERATOR][X] points for each [FORMATION] in [LOCATION]
                 mathConstant = EvaluateNumberNode(children[3]);
@@ -295,6 +300,7 @@ public class ContractClause : MonoBehaviour
     public void AddConstant()
     {
         ContractsManager.Instance.pointReward += mathConstant;
+
     }
     public void MultiplyConstant()
     {

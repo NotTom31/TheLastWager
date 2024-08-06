@@ -1858,6 +1858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5043823b84618438a7b07b43d0ab86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstRound: 1
 --- !u!1 &1735287659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,6 +2013,35 @@ MonoBehaviour:
   MainMenu: {fileID: 1725486725}
   CreditsMenu: {fileID: 1735287659}
   GameUI: {fileID: 2034733434}
+  Contract: {fileID: 0}
+  MultiContract: {fileID: 0}
+  Instructions: {fileID: 0}
+  Bet: {fileID: 0}
+  Timer: {fileID: 0}
+  SoulCount: {fileID: 0}
+  points: {fileID: 0}
+  contractClause1: {fileID: 0}
+  contractClause2: {fileID: 0}
+  contractClause3: {fileID: 0}
+  contractClause4: {fileID: 0}
+  MultiContractClause1: {fileID: 0}
+  MultiContractClause2: {fileID: 0}
+  MultiContractClause3: {fileID: 0}
+  MultiContractClause4: {fileID: 0}
+  MultiContractClause5: {fileID: 0}
+  MultiContractClause6: {fileID: 0}
+  MultiContractClause7: {fileID: 0}
+  MultiContractClause8: {fileID: 0}
+  MultiContractClause9: {fileID: 0}
+  MultiContractClause10: {fileID: 0}
+  MultiContractClause11: {fileID: 0}
+  MultiContractClause12: {fileID: 0}
+  minBet: 5
+  maxBet: 15
+  inputField: {fileID: 0}
+  minBetText: {fileID: 0}
+  maxBetText: {fileID: 0}
+  betButton: {fileID: 0}
 --- !u!1 &1983843987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,11 +2469,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54aa534ca0de9d246bc37a4d62264855, type: 3}
---- !u!82 &5219567053679184078 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5219567054315237353, guid: 54aa534ca0de9d246bc37a4d62264855, type: 3}
-  m_PrefabInstance: {fileID: 5219567053679184077}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8613470892057736109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2451,10 +2476,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1578844242}
     m_Modifications:
-    - target: {fileID: 8613470890770379329, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
-      propertyPath: tracker
-      value: 
-      objectReference: {fileID: 5219567053679184078}
+    - target: {fileID: 495991221717278518, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674833422640070475, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284803422086651160, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032123037371402452, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274605684379278436, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927735744843558588, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488436340555519741, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597078779816969152, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634588251530285736, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8613470890770379334, guid: 269d6b1526d78084aa24d96c64521962, type: 3}
       propertyPath: m_RootOrder
       value: 3

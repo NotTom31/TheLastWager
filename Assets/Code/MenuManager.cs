@@ -92,26 +92,27 @@ public class MenuManager : MonoBehaviour
     {
         SwitchUI("GameUI");
         AudioManager.Instance.Fade("AmbianceBase", false);
+        AudioManager.Instance.Queue("AmbianceBase", false);
         AudioManager.Instance.Fade("IntroBase", true);
         GameManager.Instance.SetState(GameState.BEGIN);
     }
 
     public void StartNewGame()
     {
-        Debug.Log("here");
+        SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
         GameManager.Instance.StartGame();
         OpenMultiContract();
     }
 
     public void OpenCredits()
     {
-        //Click
+        SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
         SwitchUI("Credits");
     }
 
     public void OpenMainMenu()
     {
-        //Click
+        SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
         WinText.SetActive(false);
         LoseText.SetActive(false);
         SwitchUI("MainMenu");
@@ -131,26 +132,26 @@ public class MenuManager : MonoBehaviour
     {
         minBetText.text = "Minimum bet: " + minBet.ToString();
         maxBetText.text = "Maximum bet: " + maxBet.ToString();
-        //Click
+        SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
         SwitchUI("BetUI");
     }
 
     public void OpenOneContract()
     {
-        //Click
+        SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
         SwitchUI("OneContract");
     }
 
 
     public void CloseOneContract()
     {
-        //Click
+        SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
         SwitchUI("GameUI");
     }
 
     public void OpenMultiContract()
     {
-        //Click
+        SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
         SwitchUI("MultiContract");
         GameManager.Instance.SetState(GameState.CONTRACT);
     }
