@@ -46,84 +46,6 @@ public class Card : MonoBehaviour
             Indicator.text = CardManager.Instance.card_values[0].ToString();
             added = true;
         }
-        if (isCardSelected && isPlayersCard && GameManager.Instance.gameState == GameState.PLAY)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                //FlipCard();
-            }
-
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                //SetSuit(Suit.Club);
-            }
-
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                //SetSuit(Suit.Diamond);
-            }
-
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                //SetSuit(Suit.Heart);
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                //SetSuit(Suit.Spade);
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                ChangeCardPlayState();
-            }
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                //CardManager.Instance.RandomizeAllSuitsAnimated();
-            }
-            /*if (Input.GetKeyDown(KeyCode.W))
-            {
-                Debug.Log("Player Hand Cards:");
-                foreach (Card card in CardManager.Instance.playerHandCards)
-                {
-                    Debug.Log(card.name + " - " + card.currentSuit);
-                }
-
-                Debug.Log("Devil Hand Cards:");
-                foreach (Card card in CardManager.Instance.devilHandCards)
-                {
-                    Debug.Log(card.name + " - " + card.currentSuit);
-                }
-                Debug.Log("Player Table Cards:");
-                foreach (Card card in CardManager.Instance.playerTableCards)
-                {
-                    Debug.Log(card.name + " - " + card.currentSuit);
-                }
-
-                Debug.Log("Devil Table Cards:");
-                foreach (Card card in CardManager.Instance.devilTableCards)
-                {
-                    Debug.Log(card.name + " - " + card.currentSuit);
-                }
-            }*/
-        }
-        if (GameManager.Instance.gameState == GameState.PLAY)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    Card card = hit.collider.GetComponent<Card>();
-                    if (card != null)
-                    {
-                        CardManager.Instance.SelectCard(card);
-                    }
-                }
-            }
-        }
-
     }
 
     public void ResetCard()
@@ -158,7 +80,7 @@ public class Card : MonoBehaviour
         UpdateActiveSuit();
     }
 
-    private void ChangeCardPlayState()
+    public void ChangeCardPlayState()
     {
         //Shuffle sound
         if (isFlipped)

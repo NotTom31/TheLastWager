@@ -8,6 +8,7 @@ public enum GameState
     MAIN_MENU,
     PAUSE,
     BEGIN,
+    DIALOGUE,
     DRAW,
     CONTRACT,
     BET,
