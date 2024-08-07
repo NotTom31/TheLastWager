@@ -49,5 +49,6 @@ public class TimeTracking : MonoBehaviour
     {
         Timer = TimerLength;
         UpdateGUI();
+        AudioManager.Instance.TimerObject.Play();
     }
 }

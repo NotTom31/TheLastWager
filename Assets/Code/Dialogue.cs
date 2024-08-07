@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class dialog : MonoBehaviour
+public class Dialogue : MonoBehaviour
 {
     // i dont care anyomre
     List<string> dialog1 = new List<string>();
@@ -23,22 +23,22 @@ public class dialog : MonoBehaviour
     void Start()
     {
         dialog1.Add("Hello, Mortal.");
-        dialog1.Add("I'm pleased to have finally met your aquantance.");
-        dialog1.Add("I am the Soul Proprieter.");
+        dialog1.Add("I'm pleased to have finally met your acquaintance.");
+        dialog1.Add("I am the Soul Proprietor.");
         dialog1.Add("-and i see you only have half of your soul left");
-        dialog1.Add("Half a full soul, you can see it in peices to your right.");
+        dialog1.Add("Half a full soul, you can see it in pieces to your right.");
         dialog1.Add("I want to play a small game...");
         dialog1.Add("We play a game of cards for your last remaining essence of life...");
         dialog1.Add("...the last few fragments of your soul");
 
         dialog2.Add("You see, in my game,");
-        dialog2.Add("the cards dont have any action on their own");
+        dialog2.Add("the cards don't have any action on their own");
         dialog2.Add("It is YOU that determines what they do.");
         dialog2.Add("I have some... contracts that I need you to sign");
         dialog2.Add("Each has clauses that change what each of the suits do");
         dialog2.Add("The goal is to have a hand that wins more points than mine");
         dialog2.Add("Though, I must warn you- ");
-        dialog2.Add("Ive been playing this game...");
+        dialog2.Add("I've been playing this game...");
         dialog2.Add("...for longer than you humans have walked the earth.");
         dialog2.Add("Now choose. You must sign one.");
 
@@ -48,7 +48,7 @@ public class dialog : MonoBehaviour
 
         dialog4.Add("Now we play!");
         dialog4.Add("One life changing card after another.");
-        dialog4.Add("You go first. It wont matter anyways.");
+        dialog4.Add("You go first. It won't matter anyways.");
 
         dialog5.Add("My turn.");
 
@@ -56,17 +56,17 @@ public class dialog : MonoBehaviour
         dialog6.Add("Beginners luck, I suppose.");
 
         dialog7.Add("You lose.");
-        dialog7.Add("Expeceted.");
+        dialog7.Add("Expected.");
 
         dialog8.Add("Now we draw again");
         dialog8.Add("I write more contracts, and you choose");
-        dialog8.Add("These ones, they are more intresting.");
+        dialog8.Add("These ones, they are more interesting.");
         dialog8.Add("Lets see what you choose");
-        
-        dialog9.Add("Interesting decition.");
+
+        dialog9.Add("Interesting decision.");
 
         dialog10.Add("Well, this has been fun,");
-        dialog10.Add("I think its time to take things a litte...");
+        dialog10.Add("I think it's time to take things a little...");
         dialog10.Add("... more seriously.");
 
 
