@@ -223,4 +223,15 @@ public class GameManager : MonoBehaviour
             SetState(Turn.PLAYER);
         }
     }
+
+    public void FinishedDialogue(int i)
+    {
+        switch (i)
+        {
+        case 1:
+                GameManager.Instance.StartGame();
+                MenuManager.Instance.OpenMultiContract();
+                break;
+        }
+    }
 }

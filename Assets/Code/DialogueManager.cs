@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Dialogue : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
     // i dont care anyomre
     List<string> dialog1 = new List<string>();
@@ -18,7 +18,26 @@ public class Dialogue : MonoBehaviour
     List<string> dialog10 = new List<string>();
     List<string> queue = new List<string>();
 
+    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] AudioSource audioSource;
 
+    private int currentDialogue = 0;
+
+    public static DialogueManager Instance;
+
+    private void Awake()
+    {
+        // Singleton pattern
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        }
+    }
 
     void Start()
     {
@@ -71,7 +90,7 @@ public class Dialogue : MonoBehaviour
 
 
 
-        after1stdrawbeforecontract();
+
 
         GetComponent<TextMeshProUGUI>().text = "";
     }
@@ -79,59 +98,86 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && queue.Count > 0)
+
+    }
+
+    public void NextDialogue()
+    {
+        if (queue.Count > 1)
         {
-            GetComponent<TextMeshProUGUI>().text = queue[0];
+            text.text = queue[0];
             queue.RemoveAt(0);
         }
+        else
+        {
+            EndDialogue();
+        }
     }
-    
-    void start_diag(List<string> diag)
+
+    private void EndDialogue()
     {
+        GameManager.Instance.FinishedDialogue(currentDialogue);
+    }
+
+    void StartDialogue(List<string> diag)
+    {
+        GameManager.Instance.SetState(GameState.DIALOGUE);
+        MenuManager.Instance.OpenDialogue();
         diag.Add("");
         queue.AddRange(diag);
+        NextDialogue();
     }
 
 
     public void after1stdrawbeforecontract()
     {
-        start_diag(dialog1);
+        currentDialogue = 1;
+        StartDialogue(dialog1);
     }
     public void whenthe1stcontractsarepresented()
     {
-        start_diag(dialog2);
+        currentDialogue = 2;
+        StartDialogue(dialog2);
     }
     public void rightbefore1stbet()
     {
-        start_diag(dialog3);
+        currentDialogue = 3;
+        StartDialogue(dialog3);
     }
     public void rightbefore1sthandisplayed()
     {
-        start_diag(dialog4);
+        currentDialogue = 4;
+        StartDialogue(dialog4);
     }
     public void enemy1stturn()
     {
-        start_diag(dialog5);
+        currentDialogue = 5;
+        StartDialogue(dialog5);
     }
     public void onlyiftheplayerwins()
     {
-        start_diag(dialog6);
+        currentDialogue = 6;
+        StartDialogue(dialog6);
     }
     public void onlyiftheplayerloses()
     {
-        start_diag(dialog7);
+        currentDialogue = 7;
+        StartDialogue(dialog7);
     }
     public void rightbefore2nddraw()
     {
-        start_diag(dialog8);
+        currentDialogue = 8;
+        StartDialogue(dialog8);
     }
     public void after2ndcontractdecition()
     {
-        start_diag(dialog9);
+        currentDialogue = 9;
+        StartDialogue(dialog9);
     }
     public void rightbeforethetimerstarts()
     {
-        start_diag(dialog10);
+        currentDialogue = 10;
+        StartDialogue(dialog10);
     }
 
 }

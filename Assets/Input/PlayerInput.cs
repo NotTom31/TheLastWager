@@ -32,7 +32,7 @@ public class PlayerInput : MonoBehaviour
 
         if(GameManager.Instance.gameState == GameState.DIALOGUE)
         {
-            //do dialogue progression here
+            DialogueManager.Instance.NextDialogue();
             return;
         }
 
