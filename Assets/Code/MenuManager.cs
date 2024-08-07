@@ -120,7 +120,7 @@ public class MenuManager : MonoBehaviour
 
     public void OpenGameOver(bool isWin)
     {
-        GameManager.Instance.SetState(GameState.GAMEOVER);
+        //GameManager.Instance.SetState(GameState.GAMEOVER);
         if (isWin)
             WinText.SetActive(true);
         else 
@@ -254,6 +254,7 @@ public class MenuManager : MonoBehaviour
                 Instructions.SetActive(true);
                 break;
             case "BetUI":
+                GameUI.SetActive(true);
                 Bet.SetActive(true);
                 break;
             case "GameOver":
