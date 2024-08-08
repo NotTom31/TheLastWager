@@ -46,7 +46,7 @@ public class CardManager : MonoBehaviour
         //RandomizeAllSuitsAnimated();
         for (int i = 0; i <= 3; i++)
         {
-            print("hiiiiiii");
+            //print("hiiiiiii");
             card_values.Add(0f);
         }
 

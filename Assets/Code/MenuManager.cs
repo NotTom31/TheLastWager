@@ -101,7 +101,7 @@ public class MenuManager : MonoBehaviour
     public void StartNewGame()
     {
         SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
-        if(GameManager.Instance.DrawCount == 0)
+        if(GameManager.Instance.firstRound)
         {
             DialogueManager.Instance.after1stdrawbeforecontract();
         }
@@ -275,6 +275,7 @@ public class MenuManager : MonoBehaviour
                 GameOver.SetActive(true);
                 break;
             case "Dialogue":
+                GameUI.SetActive(true);
                 Dialogue.SetActive(true);
                 break;
         }

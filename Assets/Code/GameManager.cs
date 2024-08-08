@@ -148,6 +148,7 @@ public class GameManager : MonoBehaviour
     public void SetState(GameState state)
     {
         gameState = state;
+        Debug.Log(GameManager.Instance.gameState);
         OnStateChange?.Invoke(state); //prob a better way to do this
     }
 
@@ -176,6 +177,7 @@ public class GameManager : MonoBehaviour
 
     public void RandomizeWithDelay()
     {
+        SetState(GameState.DRAW);
         Invoke("Randomize", 1f);
     }
 
@@ -189,8 +191,8 @@ public class GameManager : MonoBehaviour
         int i = Random.Range(0, CardManager.Instance.devilHandCards.Count);
         CardManager.Instance.devilSelectedCard = CardManager.Instance.devilHandCards[i];
 
-        Debug.Log(i + " hey");
-        Debug.Log(CardManager.Instance.devilSelectedCard);
+        //Debug.Log(i + " hey");
+        //Debug.Log(CardManager.Instance.devilSelectedCard);
 
         Card devilCard = CardManager.Instance.devilSelectedCard;
         Suit devilSuit = devilCard.currentSuit;
