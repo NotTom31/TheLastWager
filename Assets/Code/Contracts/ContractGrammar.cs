@@ -26,7 +26,7 @@ public static class ContractGrammar
             new List<Symbol>() {
                 new Symbol(Nonterminal.PersistentEffect) },
             new List<Symbol>() {
-                new Symbol("Whenever"),
+                new Symbol("Whenever "),
                 new Symbol(Nonterminal.Event),
                 new Symbol(", "),
                 new Symbol(Nonterminal.PersistentEffect),
@@ -38,7 +38,7 @@ public static class ContractGrammar
                 new Symbol(Nonterminal.PersistentEffect),
                 new Symbol(" for the rest of that hand") },
             new List<Symbol>() {
-                new Symbol("Whenever"),
+                new Symbol("Whenever "),
                 new Symbol(Nonterminal.Event),
                 new Symbol(", "),
                 new Symbol(Nonterminal.ImmediateEffect) },

@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject Instructions;
     [SerializeField] GameObject Bet;
     [SerializeField] GameObject GameOver;
+    [SerializeField] GameObject Dialogue;
     [SerializeField] TimeTracking Timer;
     [SerializeField] SoulTracking SoulCount;
     [SerializeField] PointTracker points;
@@ -100,8 +101,20 @@ public class MenuManager : MonoBehaviour
     public void StartNewGame()
     {
         SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
-        GameManager.Instance.StartGame();
-        OpenMultiContract();
+        if(GameManager.Instance.firstRound)
+        {
+            DialogueManager.Instance.after1stdrawbeforecontract();
+        }
+        else
+        {
+            GameManager.Instance.StartGame();
+            OpenMultiContract();
+        }
+    }
+
+    public void OpenDialogue()
+    {
+        SwitchUI("Dialogue");
     }
 
     public void OpenCredits()
@@ -120,7 +133,7 @@ public class MenuManager : MonoBehaviour
 
     public void OpenGameOver(bool isWin)
     {
-        GameManager.Instance.SetState(GameState.GAMEOVER);
+        //GameManager.Instance.SetState(GameState.GAMEOVER);
         if (isWin)
             WinText.SetActive(true);
         else 
@@ -232,6 +245,7 @@ public class MenuManager : MonoBehaviour
         Instructions.SetActive(false);
         Bet.SetActive(false);
         GameOver.SetActive(false);
+        Dialogue.SetActive(false);
 
         switch (name)
         {
@@ -254,10 +268,15 @@ public class MenuManager : MonoBehaviour
                 Instructions.SetActive(true);
                 break;
             case "BetUI":
+                GameUI.SetActive(true);
                 Bet.SetActive(true);
                 break;
             case "GameOver":
                 GameOver.SetActive(true);
+                break;
+            case "Dialogue":
+                GameUI.SetActive(true);
+                Dialogue.SetActive(true);
                 break;
         }
     }

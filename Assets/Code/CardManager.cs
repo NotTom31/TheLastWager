@@ -46,7 +46,7 @@ public class CardManager : MonoBehaviour
         //RandomizeAllSuitsAnimated();
         for (int i = 0; i <= 3; i++)
         {
-            print("hiiiiiii");
+            //print("hiiiiiii");
             card_values.Add(0f);
         }
 
@@ -78,6 +78,9 @@ public class CardManager : MonoBehaviour
 
     public void SelectCard(Card card)
     {
+        if (GameManager.Instance.gameState != GameState.PLAY || card.isPlayersCard == false)
+            return;
+
         if (selectedCard != null)
         {
             selectedCard.isCardSelected = false;
@@ -85,6 +88,8 @@ public class CardManager : MonoBehaviour
 
         selectedCard = card;
         selectedCard.isCardSelected = true;
+
+        card.ChangeCardPlayState();
     }
 
     public void PlayCard(Suit suit, bool isPlayersCard)
