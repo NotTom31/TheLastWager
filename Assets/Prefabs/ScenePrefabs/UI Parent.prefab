@@ -1023,8 +1023,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Evan Charfauros: \nProgramming, Design\nThomas Mezzie:\nProgramming, Design,
-    Level Design\nBlake Hunter:\nArtist\nHadey:\nMusic, Sound Programming, VFX, Design"
+  m_text: "Evan Charfauros: \r\nProgrammer, Design\r\nThomas Mezzie:\r\nProgrammer,
+    Design, Level Design\r\nBlake Hunter:\r\nArtist\r\nHadey Lewis:\r\nMusic, Audio
+    Implementation, VFX, Design"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94fad8ba83d3e1f4e8a146bcf7eee08c, type: 2}
   m_sharedMaterial: {fileID: 4361828980217189180, guid: 94fad8ba83d3e1f4e8a146bcf7eee08c, type: 2}
