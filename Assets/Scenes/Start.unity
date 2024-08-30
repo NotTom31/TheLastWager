@@ -1566,14 +1566,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 836359778}
     - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
-      propertyPath: maxBet
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
-      propertyPath: minBet
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
       propertyPath: points
       value: 
       objectReference: {fileID: 1196832865}
