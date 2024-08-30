@@ -22,12 +22,12 @@ public class SoulTracking : MonoBehaviour
     public void SetSoulCount(float c)
     {
         Souls = c;
-        ResetSouls();
+        UpdateGUI();
     }
 
     public void ResetSouls()
     {
-        
+        Souls = 50f;
         UpdateGUI();
     }
 }

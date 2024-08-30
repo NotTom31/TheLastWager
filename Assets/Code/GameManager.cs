@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            MenuManager.Instance.CheckWinner();
+            
             ContractsManager.Instance.GenerateProspectiveContracts(3);
         }
         RandomizeWithDelay();
@@ -199,6 +199,11 @@ public class GameManager : MonoBehaviour
         devilCard.FlipCard();
         CardManager.Instance.PlayCardDevil(devilSuit, false);
         
+    }
+
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
     private void NextRound()

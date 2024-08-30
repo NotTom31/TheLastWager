@@ -43,8 +43,11 @@ public class MenuManager : MonoBehaviour
 
     public static MenuManager Instance;
 
-    public int minBet = 5;
-    public int maxBet = 15;
+    private int minBet;
+    private int maxBet;
+
+    public int minBetIncrement;
+    public int maxBetIncrement;
     private int betValue;
     public TMP_InputField inputField;
     public TextMeshProUGUI minBetText;
@@ -100,6 +103,10 @@ public class MenuManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        if (MenuManager.Instance.CheckWinner())
+            return;
+
+
         SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
         if(GameManager.Instance.firstRound)
         {
@@ -126,19 +133,18 @@ public class MenuManager : MonoBehaviour
     public void OpenMainMenu()
     {
         SFXManager.Instance.PlaySound("Frag1", 2f, 1f);
-        WinText.SetActive(false);
-        LoseText.SetActive(false);
+        GameManager.Instance.SetState(GameState.MAIN_MENU);
         SwitchUI("MainMenu");
     }
 
     public void OpenGameOver(bool isWin)
     {
-        //GameManager.Instance.SetState(GameState.GAMEOVER);
+        SwitchUI("GameOver");
+        GameManager.Instance.SetState(GameState.GAMEOVER);
         if (isWin)
             WinText.SetActive(true);
         else 
             LoseText.SetActive(true);
-        SwitchUI("GameOver");
     }
 
     public void OpenBet()
@@ -178,7 +184,7 @@ public class MenuManager : MonoBehaviour
         OpenBet();
     }
 
-    public void CheckWinner()
+    public bool CheckWinner()
     {
         int result = points.ComparePoints();
         switch (result)
@@ -194,19 +200,22 @@ public class MenuManager : MonoBehaviour
                 break;
         }
 
-        minBet += 5;
-        maxBet += 15;
+        minBet += minBetIncrement;
+        maxBet += maxBetIncrement;
 
         if (SoulCount.Souls >= 100)
         {
             OpenGameOver(true);
             Debug.Log("WOW");
+            return true;
         }
         else if (SoulCount.Souls <= 0)
         {
             OpenGameOver(false);
             Debug.Log("Game Over");
+            return true;
         }
+        return false;
     }
 
     public void SubmitBet()
@@ -273,6 +282,8 @@ public class MenuManager : MonoBehaviour
                 break;
             case "GameOver":
                 GameOver.SetActive(true);
+                GameUI.SetActive(true);
+                //Debug.Log("gameover here");
                 break;
             case "Dialogue":
                 GameUI.SetActive(true);
@@ -301,6 +312,22 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("Quit Game");
         Application.Quit();
+    }
+
+    public void ReturnToMenu()
+    {
+        GameManager.Instance.LoadScene("Start"); //lazy way to reset until i finish the reset logic
+        /*ResetGame();
+        WinText.SetActive(false);
+        LoseText.SetActive(false);
+        OpenMainMenu();*/
+    }
+
+    private void ResetGame()
+    {
+        minBet = 0;
+        maxBet = 0;
+        SoulCount.SetSoulCount(50f);
     }
 
     public void UpdateContractText(int i, string s)

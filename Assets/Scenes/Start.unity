@@ -1022,6 +1022,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8346006815132099133, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 931161266}
+    - target: {fileID: 8346006815132099133, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 298a58744ecf51a4e889bb6d4b73bf4c, type: 3}
 --- !u!1 &836359778 stripped
@@ -1557,6 +1565,14 @@ PrefabInstance:
       propertyPath: GameUI
       value: 
       objectReference: {fileID: 836359778}
+    - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: maxBet
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
+      propertyPath: minBet
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5601308390607683754, guid: bbfc1e61482caf143a0f5a497ea09d02, type: 3}
       propertyPath: points
       value: 
