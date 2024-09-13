@@ -43,8 +43,8 @@ public class MenuManager : MonoBehaviour
 
     public static MenuManager Instance;
 
-    private int minBet;
-    private int maxBet;
+    private float minBet;
+    private float maxBet;
 
     public int minBetIncrement;
     public int maxBetIncrement;
@@ -203,6 +203,17 @@ public class MenuManager : MonoBehaviour
         minBet += minBetIncrement;
         maxBet += maxBetIncrement;
 
+        if(maxBet >= SoulCount.Souls) //temp fix to stop impossible bets, replace with better betting calculations
+        {
+            maxBet = SoulCount.Souls;
+        }
+
+        if(minBet >= SoulCount.Souls) //temp
+        {
+            minBet = SoulCount.Souls;
+            maxBet = SoulCount.Souls;
+        }
+
         if (SoulCount.Souls >= 100)
         {
             OpenGameOver(true);
@@ -226,7 +237,7 @@ public class MenuManager : MonoBehaviour
         }
 
         SoulCount.SetSoulCount(SoulCount.Souls - betValue);
-
+        inputField.text = "";
         BeginPlay();
     }
 
