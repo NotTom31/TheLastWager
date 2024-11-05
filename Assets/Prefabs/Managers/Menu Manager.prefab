@@ -47,3 +47,36 @@ MonoBehaviour:
   MainMenu: {fileID: 0}
   CreditsMenu: {fileID: 0}
   GameUI: {fileID: 0}
+  Contract: {fileID: 0}
+  MultiContract: {fileID: 0}
+  Instructions: {fileID: 0}
+  Bet: {fileID: 0}
+  GameOver: {fileID: 0}
+  Dialogue: {fileID: 0}
+  Timer: {fileID: 0}
+  SoulCount: {fileID: 0}
+  points: {fileID: 0}
+  contractClause1: {fileID: 0}
+  contractClause2: {fileID: 0}
+  contractClause3: {fileID: 0}
+  contractClause4: {fileID: 0}
+  MultiContractClause1: {fileID: 0}
+  MultiContractClause2: {fileID: 0}
+  MultiContractClause3: {fileID: 0}
+  MultiContractClause4: {fileID: 0}
+  MultiContractClause5: {fileID: 0}
+  MultiContractClause6: {fileID: 0}
+  MultiContractClause7: {fileID: 0}
+  MultiContractClause8: {fileID: 0}
+  MultiContractClause9: {fileID: 0}
+  MultiContractClause10: {fileID: 0}
+  MultiContractClause11: {fileID: 0}
+  MultiContractClause12: {fileID: 0}
+  WinText: {fileID: 0}
+  LoseText: {fileID: 0}
+  minBetIncrement: 5
+  maxBetIncrement: 15
+  inputField: {fileID: 0}
+  minBetText: {fileID: 0}
+  maxBetText: {fileID: 0}
+  betButton: {fileID: 0}
