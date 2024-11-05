@@ -92,7 +92,7 @@ public class DialogueManager : MonoBehaviour
 
 
 
-        GetComponent<TextMeshProUGUI>().text = "";
+        //GetComponent<TextMeshProUGUI>().text = "";
     }
 
     // Update is called once per frame
