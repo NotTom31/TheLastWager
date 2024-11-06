@@ -81,6 +81,12 @@ public class ContractsManager : MonoBehaviour
     public void ActivateContract(Contract c)
     {
         prospectiveContracts.Clear();
+
+        if (activeContracts.Count >= 5) //This is a bandaid fix to prevent the softlock, we will need to reevaluate this
+        {
+            activeContracts.RemoveAt(0);
+        }
+
         activeContracts.Add(c);
 
         OnNewContract?.Invoke();
