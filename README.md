@@ -5,6 +5,8 @@ Made for the 48 hour [IGDA San Diego Game Jam 2024](https://itch.io/jam/sdgj-24)
 
 # **[Play Our Game!](https://tommezzie.itch.io/the-last-wager)**
 
+## **[Read our Devlog](https://tommezzie.itch.io/the-last-wager/devlog)**
+
 ![TheLastWager_Gameplay](https://github.com/user-attachments/assets/23f4b5ad-9c18-4b96-9c88-b980c9ef96ae)
 
 # Credits:
